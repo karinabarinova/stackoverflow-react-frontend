@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import Layout from '../../components/Layout/Layout';
 import Posts from '../../components/Posts/Posts';
 
-// import './MainPage.css';
+import './MainPage.css';
 
 class MainPage extends Component {
     render() {
@@ -11,6 +11,8 @@ class MainPage extends Component {
             <div className="MainPage">
                 <Layout/>
                 <Route path="/" exact component={Posts}/>
+                {/* <Route path="/new-post" component={NewPost} /> */}
+                <Route path="/:id" exact component={Posts} />
             </div>
         )
     }
