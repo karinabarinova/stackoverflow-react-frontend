@@ -1,4 +1,4 @@
-.Posts a{
+.Posts {
     margin-top: 256px;
     display: flex;
     flex-flow: column;
@@ -6,6 +6,4 @@
     align-items: center;
     width: 80%;
     margin: auto;
-    text-decoration: none;
-    color: grey
 }

@@ -1,9 +1,7 @@
 import { React, Component } from 'react';
-import { Link } from 'react-router-dom';
 import Post from './Post/Post';
 import axios from 'axios';
 import './Posts.css';
-
 
 class Posts extends Component {
     state = {
@@ -23,19 +21,21 @@ class Posts extends Component {
             })
     }
 
+    postSelectedHandler = (id) => {
+        this.props.history.push('/posts/' + id);
+    }
+
     render() {
         let posts = <p style={{textAlign: "center"}}>Something went wrong!</p>
         if (!this.state.error) {
             posts = this.state.posts.map(post => {
-                return ( 
-                <Link to={ "/posts/" + post.id} key={post.id}>
-                    <Post 
+                return <Post 
+                        key={post.id}
                         title={post.title}
                         author={post.author}
                         rating={post.rating}
                         publish_date={post.publish_date}
                     />
-                </Link>)
             })
         }
         return(
