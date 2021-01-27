@@ -1,0 +1,25 @@
+.searchContainer {
+    margin-right: 10em;
+}
+
+input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+}
+  
+.searchContainer button {
+    float: right;
+    padding: 6px 8px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+  }
+  
+.searchContainer button:hover {
+    background: #ccc;
+}

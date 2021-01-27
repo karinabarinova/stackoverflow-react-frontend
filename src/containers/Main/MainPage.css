@@ -1,10 +1,10 @@
 .Posts {
     /* font-family:  Arial,"Helvetica Neue",Helvetica,sans-serif; */
-
     margin-top: 256px;
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column;
     justify-content: center;
+    align-items: center;
     width: 80%;
     margin: auto;
 }

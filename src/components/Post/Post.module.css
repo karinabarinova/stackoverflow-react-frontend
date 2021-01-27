@@ -1,5 +1,7 @@
 .Post {
-    width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
     padding: 16px;
     text-align: center;
     border: 1px solid #eee;
@@ -7,6 +9,8 @@
     margin: 10px;
     box-sizing: border-box;
     cursor: pointer;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .Post:hover,
@@ -14,7 +18,16 @@
     background-color: #C0DDF5;
 }
 
+.Post .Postblock {
+    color: grey;
+    border: 1px solid lightgray;
+    margin: 8px;
+    padding: 8px;
+}
+
 .Author {
     margin: 16px 0;
-    color: #ccc;
+    color: black;
+    font-weight: 600;
+    flex-basis: 100%;
 }
