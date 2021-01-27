@@ -1,4 +1,4 @@
-.MainPage ul {
+/* .MainPage ul {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -15,11 +15,10 @@
 .MainPage a {
     text-decoration: none;
     color: grey;
-    /* padding: 6px 16px; */
     cursor: pointer;
-}
+} */
 
-.MainPage a:hover,
+/* .MainPage a:hover,
 .MainPage a:active {
     color: black;
-}
+} */

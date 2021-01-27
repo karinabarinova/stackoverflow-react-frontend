@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Logo from '../../components/Logo/Logo'
+// import Logo from '../../components/Logo/Logo'
+import Layout from '../../components/Layout/Layout';
 
 import './MainPage.css';
 
@@ -10,19 +11,7 @@ class MainPage extends Component {
     render() {
         return (
             <div className="MainPage">
-                <header>
-                    <div>
-                        <Logo />
-                    </div>
-                    <nav>
-                        <ul>
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/new-post">New Post</a></li>
-                            <li><a href="/login">Login</a></li>
-                            <li><a href="/register">Register</a></li>
-                        </ul>
-                    </nav>
-                </header>
+                <Layout />
             </div>
         )
     }
