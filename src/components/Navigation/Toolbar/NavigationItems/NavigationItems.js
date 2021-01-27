@@ -8,8 +8,8 @@ const navigationItems = (props) => (
         <Search />
         <NavigationItem link="/" active>Home</NavigationItem>
         <NavigationItem link="/">New Post</NavigationItem>
-        <NavigationItem link="/">Login</NavigationItem>
-        <NavigationItem link="/">Register</NavigationItem>
+        <NavigationItem link="/login">Login</NavigationItem>
+        <NavigationItem link="/register">Register</NavigationItem>
     </ul>
 )
 
