@@ -13,7 +13,7 @@ class MainPage extends Component {
     };
 
     componentDidMount() {
-        axios.get('/posts')
+        axios.get('/posts?page=1&limit=10&order_by=createdAt&order_direction=desc')
             .then((res) => {
                 const posts = res.data.data.data;
                 // console.log(posts)
@@ -33,6 +33,7 @@ class MainPage extends Component {
                     title={post.title}
                     author={post.author}
                     rating={post.rating}
+                    publish_date={post.publish_date}
                 />
             })
         }
