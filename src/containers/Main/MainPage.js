@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Logo from '../../components/Logo/Logo'
 
 import './MainPage.css';
 
@@ -10,6 +11,9 @@ class MainPage extends Component {
         return (
             <div className="MainPage">
                 <header>
+                    <div>
+                        <Logo />
+                    </div>
                     <nav>
                         <ul>
                             <li><a href="/">Home</a></li>

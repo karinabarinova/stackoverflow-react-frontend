@@ -4,6 +4,7 @@
     padding: 0;
     width: 100%;
     text-align: center;
+    background-color: gainsboro;
 }
 
 .MainPage li {
@@ -14,6 +15,8 @@
 .MainPage a {
     text-decoration: none;
     color: grey;
+    /* padding: 6px 16px; */
+    cursor: pointer;
 }
 
 .MainPage a:hover,
