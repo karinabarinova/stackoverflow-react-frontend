@@ -1,8 +1,7 @@
 .Logo {
-    padding: 8px;
+    padding: 8px 64px;
     height: 100%;
     box-sizing: border-box;
-    border-radius: 5px;
 }
 
 .Logo img {
