@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Layout from '../../components/Layout/Layout';
 import Posts from '../../components/Posts/Posts';
 import FullPost from '../../components/Posts/FullPost/FullPost';
@@ -11,9 +11,12 @@ class MainPage extends Component {
         return (
             <div className="MainPage">
                 <Layout/>
-                <Route path="/" exact component={Posts}/>
-                {/* <Route path="/new-post" component={NewPost} /> */}
-                <Route path="/posts/:id" exact component={FullPost} />
+                <Switch>
+                    <Route path="/" exact component={Posts}/>
+                    {/* <Route path="/new-post" component={NewPost} /> */}
+                    <Route path="/posts/:id" exact component={FullPost} />
+                </Switch>
+                
             </div>
         )
     }
