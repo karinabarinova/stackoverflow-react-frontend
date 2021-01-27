@@ -15,6 +15,8 @@ class MainPage extends Component {
                     <Route path="/" exact component={Posts}/>
                     {/* <Route path="/new-post" component={NewPost} /> */}
                     <Route path="/posts/:id" exact component={FullPost} />
+                    {/* <Route component={NotFound} */}
+                    <Route render={() => <h1>Page not found</h1>} />
                 </Switch>
                 
             </div>
