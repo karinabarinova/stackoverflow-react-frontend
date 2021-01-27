@@ -1,0 +1,22 @@
+.MainPage ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.MainPage li {
+    display: inline-block;
+    margin: 20px;
+}
+
+.MainPage a {
+    text-decoration: none;
+    color: grey;
+}
+
+.MainPage a:hover,
+.MainPage a:active {
+    color: black;
+}
