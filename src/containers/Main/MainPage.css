@@ -1,3 +1,12 @@
+.Posts {
+    margin-top: 256px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+}
+
 /* .MainPage ul {
     list-style: none;
     margin: 0;

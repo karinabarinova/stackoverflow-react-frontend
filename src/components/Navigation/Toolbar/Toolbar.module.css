@@ -2,7 +2,7 @@
     height: 56px;
     width: 100%;
     /* always at the top */
-    position: fixed; 
+    /* position: fixed;  */
     top: 0;
     left: 0;
     background-color: lightgray;

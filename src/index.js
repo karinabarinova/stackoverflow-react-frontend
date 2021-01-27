@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:3000/api';
+axios.defaults.baseURL = 'http://localhost:3001/api';
 axios.defaults.headers.common['Authorization'] = 'SOME_TOKEN'
 
 axios.interceptors.request.use(req => {
