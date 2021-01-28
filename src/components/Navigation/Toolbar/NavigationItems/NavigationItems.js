@@ -12,8 +12,8 @@ const navigationItems = (props) => (
         activeClassName="home-active"
         >Home</NavigationItem>
         <NavigationItem link="/new-post">New Post</NavigationItem>
-        <NavigationItem link="/login">Login</NavigationItem>
-        <NavigationItem link="/register">Register</NavigationItem>
+        <NavigationItem link="/register">Sign Up</NavigationItem>
+        <NavigationItem link="/login">Sign In</NavigationItem>
     </ul>
 )
 

@@ -4,8 +4,7 @@ import Layout from '../../components/Layout/Layout';
 import Posts from '../../components/Posts/Posts';
 import FullPost from '../../components/Posts/FullPost/FullPost';
 import NewPost from '../../components/Posts/NewPost/NewPost';
-
-import Input from '../../components/Input/Input';
+import Auth from '../Auth/Auth';
 
 import './MainPage.css';
 
@@ -17,11 +16,11 @@ class MainPage extends Component {
                 <Switch>
                     <Route path="/" exact component={Posts}/>
                     <Route path="/new-post" component={NewPost} />
+                    <Route path="/register" component={Auth} />
                     <Route path="/posts/:id" exact component={FullPost} />
                     {/* <Route component={NotFound} */}
                     <Route render={() => <h1>Page not found</h1>} />
                 </Switch>
-                <Input />
             </div>
         )
     }
