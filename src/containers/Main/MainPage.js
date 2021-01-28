@@ -5,6 +5,8 @@ import Posts from '../../components/Posts/Posts';
 import FullPost from '../../components/Posts/FullPost/FullPost';
 import NewPost from '../../components/Posts/NewPost/NewPost';
 
+import Input from '../../components/Input/Input';
+
 import './MainPage.css';
 
 class MainPage extends Component {
@@ -19,7 +21,7 @@ class MainPage extends Component {
                     {/* <Route component={NotFound} */}
                     <Route render={() => <h1>Page not found</h1>} />
                 </Switch>
-                
+                <Input />
             </div>
         )
     }
