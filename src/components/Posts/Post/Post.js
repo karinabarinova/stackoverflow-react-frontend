@@ -5,7 +5,7 @@ const post = (props) => {
     const date = new Date(props.publish_date);
     const changedDate = `${date.getUTCDate()}.${date.getUTCMonth() + 1}.${date.getUTCFullYear()} ${date.getUTCHours()}:${date.getUTCMinutes()}`;
     return (
-    <article className={classes.Post}>
+    <article className={classes.Post} onClick={props.clicked}>
         <div className={classes.Postblock}>
             <div>
                 <span>{props.rating}</span>

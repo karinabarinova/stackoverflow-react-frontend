@@ -35,6 +35,7 @@ class Posts extends Component {
                         author={post.author}
                         rating={post.rating}
                         publish_date={post.publish_date}
+                        clicked={() => this.postSelectedHandler(post.id)}
                     />
             })
         }
