@@ -9,30 +9,28 @@ class Auth extends Component {
             login: {
                 elementType: 'input',
                 elementConfig: {
-                    type: 'text',
+                    type: 'email', //TO DO: change to text
                     placeholder: 'Username'
                 },
                 value: '',
                 validation: {
                     required: true,
-                    isEmail: true
                 },
                 valid: false,
-                touched: "false"
+                touched: false
             },
             fullName: {
                 elementType: 'input',
                 elementConfig: {
-                    type: 'text',
+                    type: 'email', //TO DO: change to text
                     placeholder: 'Full Name'
                 },
                 value: '',
                 validation: {
                     required: true,
-                    isEmail: true
                 },
                 valid: false,
-                touched: "false"
+                touched: false
             },
             email: {
                 elementType: 'input',
@@ -46,7 +44,7 @@ class Auth extends Component {
                     isEmail: true
                 },
                 valid: false,
-                touched: "false"
+                touched: false
             },
             password: {
                 elementType: 'input',
@@ -74,7 +72,7 @@ class Auth extends Component {
                     minLength: 6
                 },
                 valid: false,
-                touched: "false"
+                touched: false
             }
         }
     }
