@@ -12,8 +12,9 @@ const navigationItems = (props) => (
         activeClassName="home-active"
         >Home</NavigationItem>
         <NavigationItem link="/new-post">New Post</NavigationItem>
-        <NavigationItem link="/register">Sign Up</NavigationItem>
-        <NavigationItem link="/login">Sign In</NavigationItem>
+        { !props.isAuthenticated 
+            ? <NavigationItem link="/register">Sign Up</NavigationItem>
+            : <NavigationItem link="/logout">Log out</NavigationItem>}
     </ul>
 )
 
