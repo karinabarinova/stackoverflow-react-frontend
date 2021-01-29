@@ -13,8 +13,6 @@ class Categories extends Component {
         axios.get('/categories')
             .then((res) => {
                 const categories = res.data;
-                console.log(categories)
-                // console.log(posts)
                 this.setState({ categories: categories });
             })
             .catch(error => {
