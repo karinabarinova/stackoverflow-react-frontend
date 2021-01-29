@@ -1,4 +1,7 @@
 .FullPost {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 80%;
     margin: 20px auto;
     border: 1px solid #eee;
@@ -31,4 +34,35 @@
 .Edit button.Delete:hover,
 .Edit button.Delete:active {
     color: darkred;
+}
+
+.Postblock1 {
+    color: grey;
+    border: 1px solid lightgray;
+    margin: 8px;
+    padding: 8px;
+}
+
+.Postblock2 {
+    color: grey;
+    margin: 8px;
+    padding: 8px;
+}
+
+.arrowUp {
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;   
+    border-bottom: 20px solid lightgray;
+    margin-bottom: 10px;
+}
+
+.arrowDown {
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid lightgray;
+    margin-top: 10px;
 }

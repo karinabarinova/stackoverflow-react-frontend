@@ -6,7 +6,14 @@ const post = (props) => {
     const changedDate = `${date.getUTCDate()}.${date.getUTCMonth() + 1}.${date.getUTCFullYear()} ${date.getUTCHours()}:${date.getUTCMinutes()}`;
     return (
     <article className={classes.Post} onClick={props.clicked}>
-        <div className={classes.Postblock}>
+        <div className={classes.Postblock2}>
+            <div>
+                <div className={classes.arrowUp}></div>
+                <span>{props.rating}</span>
+                <div className={classes.arrowDown}></div>
+            </div>
+        </div>
+        <div className={classes.Postblock1}>
             <div>
                 <span>{props.rating}</span>
             </div>
