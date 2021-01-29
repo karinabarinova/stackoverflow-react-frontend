@@ -77,7 +77,8 @@ class Auth extends Component {
                 valid: false,
                 touched: false
             }
-        }
+        },
+        isSignup: true
     }
 
     checkValidity(value, rules) {
@@ -127,7 +128,13 @@ class Auth extends Component {
     submitHander = (event) => {
         event.preventDefault();
         this.props.onAuth(this.state.controls.login.value, this.state.controls.password.value,
-            this.state.controls.repeat_password.value, this.state.controls.email.value, this.state.controls.fullName.value);
+            this.state.controls.repeat_password.value, this.state.controls.email.value, this.state.controls.fullName.value, this.state.isSignup);
+    }
+
+    switchAuthModeHandler = () => {
+        this.setState(prevState => {
+            return {isSignup : !prevState.isSignup};
+        })
     }
 
     render() {
@@ -155,8 +162,12 @@ class Auth extends Component {
             <div className={classes.Auth}>
                 <form onSubmit={this.submitHander}>
                     {form}
-                    <Button btnType="Success">Register</Button>
+                    <Button btnType="Success">Submit</Button>
                 </form>
+                <Button 
+                    clicked={this.switchAuthModeHandler}
+                    btnType="Danger">Switch to {this.state.isSignup ? "SIGNIN" : "SIGNUP"}
+                </Button>
             </div>
         )
     }
@@ -170,7 +181,7 @@ class Auth extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAuth: (login, password, repeat_password, email, fullName) => dispatch(actions.auth(login, password, repeat_password, email, fullName))
+        onAuth: (login, password, repeat_password, email, fullName, isSignup) => dispatch(actions.auth(login, password, repeat_password, email, fullName, isSignup))
     };
 };
 

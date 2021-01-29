@@ -9,10 +9,16 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
 import reducer from './store/reducer';
+import authReducer from './store/reducers/auth';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
+const rootReducer = combineReducers({
+	reducer: reducer,
+	auth: authReducer
+})
+
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 
 axios.defaults.baseURL = 'http://localhost:3001/api';
 // axios.defaults.headers.common['Authorization'] = 'SOME_TOKEN'
