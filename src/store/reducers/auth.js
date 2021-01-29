@@ -5,7 +5,8 @@ const initialState = {
     token: null,
     id: null,
     error: null,
-    loading: false
+    loading: false,
+    login: null
 }
 
 const authStart = (state, action) => {
@@ -17,7 +18,8 @@ const authSuccess = (state, action) => {
         jwtToken: action.jwtToken,
         userId: action.id,
         error: null,
-        loading: false
+        loading: false,
+        login: action.login
     })
 }
 
@@ -31,7 +33,8 @@ const authFail = (state, action) => {
 const authLogout = (state, action) => {
     return updateObject(state, {
         jwtToken: null,
-        id: null
+        id: null,
+        login: null
     })
 }
 

@@ -13,6 +13,7 @@ class Layout extends Component {
             <Aux>
                 <Toolbar 
                     isAuth={this.props.isAuthenticated}
+                    loggedInUser={this.props.loggedInUser}
                 />
                 {this.props.children}
                 {/* <Footer /> */}
@@ -23,7 +24,8 @@ class Layout extends Component {
 
 const mapStateToProps = state => {
     return {
-        isAuthenticated: state.auth.jwtToken !== null
+        isAuthenticated: state.auth.jwtToken !== null,
+        loggedInUser: state.auth.login
     };
 };
 

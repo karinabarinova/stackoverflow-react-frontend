@@ -7,11 +7,12 @@ export const authStart = () => {
     };
 };
 
-export const authSuccess = (jwtToken, userId) => {
+export const authSuccess = (jwtToken, userId, login) => {
     return {
         type: actionTypes.AUTH_SUCCESS,
         jwtToken: jwtToken,
-        id: userId //add login
+        id: userId,
+        login: login //add login
     };
 };
 
@@ -63,7 +64,7 @@ export const auth = (login, password, repeat_password, email, fullName, isSignup
         axios.post(url, authData)
             .then(res => {
                 console.log(res);
-                dispatch(authSuccess(res.data.token, res.data.id))
+                dispatch(authSuccess(res.data.token, res.data.id, res.data.login))
                 dispatch(checkAuthTimeout(res.data.expiresIn));
             })
             .catch(e => {
