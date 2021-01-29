@@ -165,7 +165,7 @@ class Auth extends Component {
         let errorMessage = null;
         if (this.props.error)
             errorMessage = (
-                <p>{this.props.error}</p>
+                <p style={{textTransform: 'capitalize'}}>{this.props.error}</p>
             )
 
         return(
