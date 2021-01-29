@@ -46,6 +46,7 @@ class FullUser extends Component {
                 <div className="FullUser">
                     <h1>{this.state.loadedUser.fullName}</h1>
                     <div>
+                        <p>Rating: {this.state.loadedUser.rating}</p>
                         <p>{this.state.loadedUser.login}</p>
                         <p>{this.state.loadedUser.email}</p>
                         <p>Account created on: {this.state.loadedUser.created.slice(0, 10)}</p>

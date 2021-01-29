@@ -4,9 +4,9 @@ import classes from './User.module.css';
 const user = (props) => {
     return (
     <article className={classes.User} onClick={props.clicked}>
-        <h1>{props.fullName}</h1>
+        <h1>{props.login}</h1>
         <div>
-            <p>{props.login}</p>
+            <p>{props.rating}</p>
         </div>
         {/* <div className={classes.Info}>
             <p>{props.description}</p>

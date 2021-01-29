@@ -33,6 +33,7 @@ class Users extends Component {
                         fullName={user.fullName}
                         email={user.email}
                         login={user.login}
+                        rating={user.rating}
                         created={user.created}
                         clicked={() => this.userSelectedHandler(user.id)}
                     />
