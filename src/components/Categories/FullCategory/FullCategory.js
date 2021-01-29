@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './FullCategory.css';
+import Post from '../../Posts/Post/Post';
 
 class FullCategory extends Component {
     state = {
-        loadedCategory: null
+        loadedCategory: null,
+        postsUnderCategory: []
     }
 
     componentDidMount () {
@@ -26,6 +28,15 @@ class FullCategory extends Component {
                         console.log("Full Category")
                         console.log(e);
                     })
+                axios.get('/categories/' + + this.props.match.params.id + '/posts')
+                    .then(res => {
+                        console.log(res);
+                        this.setState({ postsUnderCategory: res.data})
+                    })
+                    .catch(e => {
+                        console.log("Full Category")
+                        console.log(e)
+                    })
         }       
     }
 
@@ -37,8 +48,14 @@ class FullCategory extends Component {
             .catch()
     }    
 
+    postSelectedHandler = (id) => {
+        this.props.history.push('/posts/' + id);
+    }
+
+
     render () {
         let category = <p style={{textAlign: 'center'}}>Please select a Category!</p>;
+        let posts = null;
         if (category.props.id)
             category = <p style={{textAlign: 'center'}}>Loading...</p>;
         if (this.state.loadedCategory) {
@@ -53,7 +70,19 @@ class FullCategory extends Component {
     
             );
         }
-        return category;
+        if (this.state.postsUnderCategory.length) {
+            posts = this.state.postsUnderCategory.map(post => {
+                return <Post 
+                        key={post.id}
+                        title={post.title}
+                        author={post.author} //TODO: incorrect author
+                        rating={post.rating}
+                        publish_date={post.publish_date}
+                        clicked={() => this.postSelectedHandler(post.id)}
+                    />
+            })
+        }
+        return [category, posts];
     }
 }
 
