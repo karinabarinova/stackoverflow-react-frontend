@@ -52,8 +52,8 @@ export const auth = (login, password, repeat_password, email, fullName, isSignup
                 dispatch(authSuccess(res.data.token, res.data.id))
             })
             .catch(e => {
-                console.log(e);
-                dispatch(authFail(e));
+                // console.log("FROM ERROR", e.response.data.message);
+                dispatch(authFail(e.response.data.message));
             })
     };
 };
