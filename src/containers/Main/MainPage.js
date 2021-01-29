@@ -8,6 +8,8 @@ import NewPost from '../../components/Posts/NewPost/NewPost';
 import Auth from '../Auth/Auth';
 import Logout from '../Auth/Logout/Logout';
 import Categories from '../../components/Categories/Categories';
+import Users from '../../components/Users/Users';
+import FullUser from '../../components/Users/FullUser/FullUser';
 
 import './MainPage.css';
 
@@ -22,8 +24,11 @@ class MainPage extends Component {
                     <Route path="/register" component={Auth} />
                     <Route path='/logout' component={Logout} />
                     <Route path='/categories' exact component={Categories} />
+                    <Route path='/users' exact component={Users} />
                     <Route path="/posts/:id" exact component={FullPost} />
                     <Route path="/categories/:id" exact component={FullCategory} />
+                    <Route path='/users/:id' exact component={FullUser} />
+
                     {/* <Route component={NotFound} */}
                     <Route render={() => <h1>Page not found</h1>} />
                 </Switch>
