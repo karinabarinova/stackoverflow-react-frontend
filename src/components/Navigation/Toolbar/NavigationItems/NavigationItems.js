@@ -1,4 +1,6 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+
 import classes from './NavigationItems.module.css';
 import NavigationItem from './NavigationItem/NavigationItem';
 import Search from '../Search/Search';
@@ -18,7 +20,7 @@ const navigationItems = (props) => (
             ? <><NavigationItem link="/login">Sign In</NavigationItem>
             <NavigationItem link="/register">Sign Up</NavigationItem></>
             : <NavigationItem link="/logout">Log out</NavigationItem>}
-        {props.isAuthenticated ? <div><p>{props.loggedInUser}</p></div> : null}
+        {props.isAuthenticated ? <div><NavLink className={classes.Dashboard} to="/">{props.loggedInUser}</NavLink></div> : null}
     </ul>
 )
 
