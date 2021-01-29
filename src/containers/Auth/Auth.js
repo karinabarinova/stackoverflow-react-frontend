@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import classes from './Auth.module.css'
+import * as actions from '../../store/index';
 
 class Auth extends Component {
     state = {
@@ -9,7 +12,7 @@ class Auth extends Component {
             login: {
                 elementType: 'input',
                 elementConfig: {
-                    type: 'email', //TO DO: change to text
+                    type: 'text', //TO DO: change to text
                     placeholder: 'Username'
                 },
                 value: '',
@@ -22,7 +25,7 @@ class Auth extends Component {
             fullName: {
                 elementType: 'input',
                 elementConfig: {
-                    type: 'email', //TO DO: change to text
+                    type: 'text', //TO DO: change to text
                     placeholder: 'Full Name'
                 },
                 value: '',
@@ -121,9 +124,10 @@ class Auth extends Component {
         this.setState({controls: updatedControls});
     }
 
-    submitHandler = (event) => {
+    submitHander = (event) => {
         event.preventDefault();
-        this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value);
+        this.props.onAuth(this.state.controls.login.value, this.state.controls.password.value,
+            this.state.controls.repeat_password.value, this.state.controls.email.value, this.state.controls.fullName.value);
     }
 
     render() {
@@ -149,7 +153,7 @@ class Auth extends Component {
 
         return(
             <div className={classes.Auth}>
-                <form>
+                <form onSubmit={this.submitHander}>
                     {form}
                     <Button btnType="Success">Register</Button>
                 </form>
@@ -158,4 +162,16 @@ class Auth extends Component {
     }
 }
 
-export default Auth;
+// const mapStateToProps = state => {
+//     return {
+//         ctr: state.counter
+//     };
+// };
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onAuth: (login, password, repeat_password, email, fullName) => dispatch(actions.auth(login, password, repeat_password, email, fullName))
+    };
+};
+
+export default connect(null, mapDispatchToProps)(Auth);

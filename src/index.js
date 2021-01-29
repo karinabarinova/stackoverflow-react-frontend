@@ -4,9 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+
+import reducer from './store/reducer';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
 
 axios.defaults.baseURL = 'http://localhost:3001/api';
-axios.defaults.headers.common['Authorization'] = 'SOME_TOKEN'
+// axios.defaults.headers.common['Authorization'] = 'SOME_TOKEN'
 
 axios.interceptors.request.use(req => {
 	console.log(req);
@@ -25,9 +34,11 @@ axios.interceptors.response.use(req => {
 })
 
 ReactDOM.render(
-  	<React.StrictMode>
-    	<App />
-  	</React.StrictMode>,
+	<Provider store={store}>
+		<React.StrictMode>
+			<App />
+		</React.StrictMode>
+	</Provider>,
   	document.getElementById('root')
 );
 
