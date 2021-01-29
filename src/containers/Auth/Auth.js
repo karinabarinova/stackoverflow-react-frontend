@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
-import classes from './Auth.module.css'
+import Spinner from '../../components/Spinner/Spinner';
+import classes from './Auth.module.css';
 import * as actions from '../../store/index';
 
 class Auth extends Component {
