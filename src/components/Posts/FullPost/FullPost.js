@@ -33,7 +33,6 @@ class FullPost extends Component {
                     .then(res => {
                         console.log(res);
                         this.setState({ CommentsUnderPost: res.data})
-                        console.log(this.state.CommentsUnderPost)
                     })
                     .catch(e => {
                         console.log("Full Post")

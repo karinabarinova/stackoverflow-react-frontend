@@ -31,6 +31,7 @@ class Posts extends Component {
             posts = this.state.posts.map(post => {
                 return <Post 
                         key={post.id}
+                        id={post.id}
                         title={post.title}
                         author={post.author}
                         rating={post.rating}

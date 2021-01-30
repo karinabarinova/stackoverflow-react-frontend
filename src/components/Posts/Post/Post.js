@@ -1,30 +1,56 @@
-import React from 'react';
+import React, { Component } from 'react';
+import axios from 'axios';
 import classes from './Post.module.css';
 
-const post = (props) => {
-    const date = new Date(props.publish_date);
-    const changedDate = `${date.getUTCDate()}.${date.getUTCMonth() + 1}.${date.getUTCFullYear()} ${date.getUTCHours()}:${date.getUTCMinutes()}`;
-    return (
-    <article className={classes.Post} onClick={props.clicked}>
-        <div className={classes.Postblock2}>
-            <div>
-                <div className={classes.arrowUp}></div>
-                <span>{props.rating}</span>
-                <div className={classes.arrowDown}></div>
-            </div>
-        </div>
-        <div className={classes.Postblock1}>
-            <div>
-                <span>{props.rating}</span>
-            </div>
-            <div>Votes</div>
-        </div>
-        <h1>{props.title}</h1>
-        <div className={classes.Info}>
-            <div>asked {changedDate}</div>
-            <div className={classes.Author}>{props.author}</div>
-        </div>
-    </article>
-)}
+class Post extends Component {
 
-export default post;
+    state = {
+        commentsCount: null
+    }
+
+    componentDidMount () {
+        axios.get('/posts/' + this.props.id + '/comments')
+            .then(res => {
+                const count = res.data.length;
+                this.setState({commentsCount: count})
+            })
+            .catch(e => {
+                console.log(e);
+            })
+    }
+
+    render() {
+        const date = new Date(this.props.publish_date);
+        const changedDate = `${date.getUTCDate()}.${date.getUTCMonth() + 1}.${date.getUTCFullYear()} ${date.getUTCHours()}:${date.getUTCMinutes()}`;
+        return (
+            <article className={classes.Post} onClick={this.props.clicked}>
+                <div className={classes.Postblock2}>
+                    <div>
+                        <div className={classes.arrowUp}></div>
+                        <span>{this.props.rating}</span>
+                        <div className={classes.arrowDown}></div>
+                    </div>
+                </div>
+                <div className={classes.Postblock1}>
+                    <div>
+                        <span>{this.props.rating}</span>
+                    </div>
+                    <div>Votes</div>
+                </div>
+                <div className={classes.Postblock1}>
+                    <div>
+                        <span>{this.state.commentsCount}</span>
+                    </div>
+                    <div>Answers</div>
+                </div>
+                <h1>{this.props.title}</h1>
+                <div className={classes.Info}>
+                    <div>asked {changedDate}</div>
+                    <div className={classes.Author}>{this.props.author}</div>
+                </div>
+            </article>
+        )
+    }
+}
+
+export default Post;
