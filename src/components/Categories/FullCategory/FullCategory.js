@@ -75,6 +75,7 @@ class FullCategory extends Component {
                 return <Post 
                         key={post.id}
                         title={post.title}
+                        id={post.id}
                         author={post.author} //TODO: incorrect author
                         rating={post.rating}
                         publish_date={post.publish_date}
