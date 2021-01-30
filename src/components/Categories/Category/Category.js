@@ -29,7 +29,7 @@ class Category extends Component {
                     <p>{this.props.description}</p>
                 </div>
                 <div>
-                    {this.state.count} questions
+                    {this.state.count ? this.state.count > 1 ? `${this.state.count} questions` : `${this.state.count} question` : null}
                 </div>
             </article>
         )

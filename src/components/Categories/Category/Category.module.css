@@ -1,6 +1,9 @@
 .Category {
     display: flex;
     flex-wrap: wrap;
+    flex: 1 0 25%; /* explanation below */
+    margin: 5px;
+    height: 100px;
     width: 80%;
     padding: 16px;
     text-align: center;
