@@ -1,16 +1,40 @@
-import React from 'react';
+import React, { Component } from 'react';
+import axios from 'axios';
 import classes from './Category.module.css';
 
-const category = (props) => {
-    return (
-    <article className={classes.Category} onClick={props.clicked}>
-        <div className={classes.CategoryBlock}>
-        </div>
-        <h1>{props.title}</h1>
-        <div className={classes.Info}>
-            <p>{props.description}</p>
-        </div>
-    </article>
-)}
+class Category extends Component { 
+    state = {
+        count: null,
+        error: false
+    }
 
-export default category;
+    componentDidMount() {
+        axios.get('/categories/' + this.props.id + '/posts')
+            .then(({data}) => {
+                const count = data.length;
+                this.setState({count: count});
+            })
+            .catch(error => {
+                this.setState({ error: true })
+            })
+    }
+    
+    render () {
+        return (
+            <article className={classes.Category} onClick={this.props.clicked}>
+                <div className={classes.CategoryBlock}>
+                </div>
+                <p className={classes.Title}>{this.props.title}</p>
+                <div className={classes.Info}>
+                    <p>{this.props.description}</p>
+                </div>
+                <div>
+                    {this.state.count} questions
+                </div>
+            </article>
+        )
+    }
+    
+}
+
+export default Category;

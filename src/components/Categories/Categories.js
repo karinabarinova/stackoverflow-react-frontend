@@ -2,6 +2,7 @@ import { React, Component } from 'react';
 import Category from './Category/Category';
 import axios from 'axios';
 import './Categories.css';
+import category from './Category/Category';
 
 class Categories extends Component {
     state = {
@@ -11,8 +12,9 @@ class Categories extends Component {
 
     componentDidMount() {
         axios.get('/categories')
-            .then((res) => {
-                const categories = res.data;
+            .then(({data}) => {
+                const categories = data.data;
+                
                 this.setState({ categories: categories });
             })
             .catch(error => {
@@ -31,6 +33,7 @@ class Categories extends Component {
                 return <Category 
                         key={category.id}
                         title={category.title}
+                        id={category.id}
                         description={category.description}
                         clicked={() => this.categorySelectedHandler(category.id)}
                     />

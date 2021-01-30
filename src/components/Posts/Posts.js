@@ -41,7 +41,7 @@ class Posts extends Component {
         }
         return(
             <section className="Posts">
-                <h3>Top Questions</h3>
+                <h3>All Questions</h3>
                 {posts}
             </section>
         )
