@@ -29,14 +29,6 @@ class FullUser extends Component {
         }       
     }
 
-    // deleteUserHandler = () => {
-    //     axios.delete('/users/' + this.props.match.params.id)
-    //         .then(res => {
-    //             // console.log(res)
-    //         })
-    //         .catch()
-    // }    
-
     render () {
         let user = <p style={{textAlign: 'center'}}>Please select a User!</p>;
         if (user.props.id)

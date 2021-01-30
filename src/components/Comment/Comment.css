@@ -1,0 +1,9 @@
+.Comment {
+    border: 1px solid lightgray;
+    padding: 8px;
+    margin: 6px;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-around;
+}
