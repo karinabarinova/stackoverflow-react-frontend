@@ -10,6 +10,7 @@ import Logout from '../Auth/Logout/Logout';
 import Categories from '../../components/Categories/Categories';
 import Users from '../../components/Users/Users';
 import FullUser from '../../components/Users/FullUser/FullUser';
+import Login from '../Auth/Login';
 
 import './MainPage.css';
 
@@ -22,6 +23,7 @@ class MainPage extends Component {
                     <Route path="/" exact component={Posts}/>
                     <Route path="/new-post" component={NewPost} />
                     <Route path="/register" component={Auth} />
+                    <Route path="/login" component={Login} />
                     <Route path='/logout' component={Logout} />
                     <Route path='/categories' exact component={Categories} />
                     <Route path='/users' exact component={Users} />

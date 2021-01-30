@@ -7,7 +7,7 @@ import Spinner from '../../components/Spinner/Spinner';
 import classes from './Auth.module.css';
 import * as actions from '../../store/index';
 
-class Auth extends Component {
+class Login extends Component {
     state = {
         controls: {
             login: {
@@ -15,19 +15,6 @@ class Auth extends Component {
                 elementConfig: {
                     type: 'text', //TO DO: change to text
                     placeholder: 'Username'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                },
-                valid: false,
-                touched: false
-            },
-            fullName: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text', //TO DO: change to text
-                    placeholder: 'Full Name'
                 },
                 value: '',
                 validation: {
@@ -64,20 +51,6 @@ class Auth extends Component {
                 valid: false,
                 touched: "false"
             },
-            repeat_password: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'password',
-                    placeholder: 'Repeat Password'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                    minLength: 6
-                },
-                valid: false,
-                touched: false
-            }
         },
     }
 
@@ -128,11 +101,11 @@ class Auth extends Component {
     submitHander = (event) => {
         event.preventDefault();
         this.props.onAuth(this.state.controls.login.value, this.state.controls.password.value,
-            this.state.controls.repeat_password.value, this.state.controls.email.value, this.state.controls.fullName.value, true);
+            null, this.state.controls.email.value, null, false);
     }
 
     switchAuthModeHandler = () => {
-        this.props.history.push('/login');
+        this.props.history.push('/register');
 
     }
 
@@ -175,7 +148,7 @@ class Auth extends Component {
                 </form>
                 <Button 
                     clicked={this.switchAuthModeHandler}
-                    btnType="Danger">Switch to SIGNIN
+                    btnType="Danger">Switch to SIGNUP
                 </Button>
             </div>
         )
@@ -195,4 +168,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Auth);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
