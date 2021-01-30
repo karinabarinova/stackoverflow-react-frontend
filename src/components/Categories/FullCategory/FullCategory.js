@@ -28,7 +28,7 @@ class FullCategory extends Component {
                         console.log("Full Category")
                         console.log(e);
                     })
-                axios.get('/categories/' + + this.props.match.params.id + '/posts')
+                axios.get('/categories/' + +this.props.match.params.id + '/posts')
                     .then(res => {
                         console.log(res);
                         this.setState({ postsUnderCategory: res.data})

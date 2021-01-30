@@ -2,7 +2,6 @@ import { React, Component } from 'react';
 import Category from './Category/Category';
 import axios from 'axios';
 import './Categories.css';
-import category from './Category/Category';
 
 class Categories extends Component {
     state = {
