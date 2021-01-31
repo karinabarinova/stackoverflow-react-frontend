@@ -2,6 +2,7 @@
     border: 1px solid lightgray;
     padding: 8px;
     margin: 6px;
+    width: 80%;
     display: flex;
     flex-flow: row;
     align-items: center;

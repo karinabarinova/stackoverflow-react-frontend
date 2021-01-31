@@ -1,0 +1,20 @@
+.MainPage {
+    width: 100%;
+    
+}
+
+.MainPage .Comments {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+}
+
+.MainPage .CategoryPosts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+}

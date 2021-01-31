@@ -83,7 +83,14 @@ class FullCategory extends Component {
                     />
             })
         }
-        return [category, posts];
+        return (
+            <div>
+                {category}
+                <div className="CategoryPosts">
+                    {posts}
+                </div>
+            </div>
+        );
     }
 }
 

@@ -90,7 +90,12 @@ class FullPost extends Component {
                 })
             }
         }
-        return [post, comments];
+        return (
+            <div>
+                {post}
+                <div className="Comments">{comments}</div>
+            </div>
+        );
     }
 }
 
