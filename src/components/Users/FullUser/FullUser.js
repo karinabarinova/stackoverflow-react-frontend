@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './FullUser.css';
+import defaultUserAvatar from '../../../assets/images/default-avatar.png';
 
 class FullUser extends Component {
     state = {
@@ -37,6 +38,7 @@ class FullUser extends Component {
             user = (
                 <div className="FullUser">
                     <h1>{this.state.loadedUser.fullName}</h1>
+                    <div className="avatar"><img src={ this.state.loadedUser.avatar ?  "http://localhost:3001/" + this.state.loadedUser.avatar.replace('resources', '') : defaultUserAvatar} target="_blank"/></div>
                     <div>
                         <p>Rating: {this.state.loadedUser.rating}</p>
                         <p>{this.state.loadedUser.login}</p>

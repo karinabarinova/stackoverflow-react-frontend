@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './User.module.css';
+import defaultUserAvatar from '../../../assets/images/default-avatar.png';
 
 const user = (props) => {
     return (
@@ -8,7 +9,7 @@ const user = (props) => {
         <div>
             <p>{props.rating}</p>
         </div>
-        {/* {props.avatar ? <div><img src={"http://localhost:3001/api/" + props.avatar} target="_blank"/></div> : null} */}
+        <div className={classes.avatar}><img src={ props.avatar ?  "http://localhost:3001/" + props.avatar.replace('resources', '') : defaultUserAvatar} target="_blank"/></div>
         {/* <div className={classes.Info}>
             <p>{props.description}</p>
         </div> */}
