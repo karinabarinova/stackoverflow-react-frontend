@@ -9,7 +9,7 @@ const user = (props) => {
         <div>
             <p>{props.rating}</p>
         </div>
-        <div className={classes.avatar}><img src={ props.avatar ?  "http://localhost:3001/" + props.avatar.replace('resources', '') : defaultUserAvatar} target="_blank"/></div>
+        <div className={classes.avatar}><img src={ props.avatar ?  "http://localhost:3001/" + props.avatar.replace('resources', '') : defaultUserAvatar} target="_blank" alt="user avatar"/></div>
         {/* <div className={classes.Info}>
             <p>{props.description}</p>
         </div> */}

@@ -18,8 +18,6 @@ class Post extends Component {
                 this.setState({commentsCount: count})
                 axios.get('/users/' + this.props.authorId)
                             .then(res => {
-                                console.log("USERINFO")
-                                console.log(res.data)
                                 this.setState({ authorAvatar: res.data.avatar})
                             })
                             .catch(e => {
@@ -74,7 +72,7 @@ class Post extends Component {
                         <div className={classes.Info}>
                             <div>asked {changedDate}</div>
                             <div className={classes.Author}>{this.props.author}</div>
-                            <div className={classes.avatar}><img src={ this.state.authorAvatar ?  "http://localhost:3001/" + this.state.authorAvatar.replace('resources', '') : defaultUserAvatar} target="_blank"/></div>
+                            <div className={classes.avatar}><img src={ this.state.authorAvatar ?  "http://localhost:3001/" + this.state.authorAvatar.replace('resources', '') : defaultUserAvatar} target="_blank" alt="author avatar"/></div>
                         </div> 
                     </div>                                           
                 </div>

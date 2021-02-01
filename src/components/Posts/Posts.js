@@ -13,7 +13,6 @@ class Posts extends Component {
         axios.get('/posts?page=1&limit=10&order_by=createdAt&order_direction=desc')
             .then((res) => {
                 const posts = res.data.data.data;
-                // console.log(posts)
                 this.setState({ posts: posts });
             })
             .catch(error => {
@@ -29,7 +28,6 @@ class Posts extends Component {
         let posts = <p style={{textAlign: "center"}}>Something went wrong!</p>
         if (!this.state.error) {
             posts = this.state.posts.map(post => {
-                console.log(post)
                 return <Post 
                         key={post.id}
                         id={post.id}

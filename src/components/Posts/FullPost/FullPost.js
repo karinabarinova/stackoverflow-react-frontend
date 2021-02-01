@@ -97,8 +97,7 @@ class FullPost extends Component {
                         <div className="column3">
                         <div className="Info">
                             <div>asked {changedDate}</div>
-                            {/* <div className="avatar">{this.state.loade}</div> */}
-                            <div className="avatar"><img src={ this.state.author.avatar ?  "http://localhost:3001/" + this.state.author.avatar.replace('resources', '') : defaultUserAvatar} target="_blank"/></div>
+                            <div className="avatar"><img src={ this.state.author.avatar ?  "http://localhost:3001/" + this.state.author.avatar.replace('resources', '') : defaultUserAvatar} target="_blank" alt="author avatar" /></div>
 
                             <div className="Author">{this.state.author.fullName}</div>
                         </div> 
