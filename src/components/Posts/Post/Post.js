@@ -47,26 +47,28 @@ class Post extends Component {
                     </div>
                 </div>
                 <div className={classes.column2}>
-                        <div className={classes.title}>
-                            <h1>{this.props.title}</h1>
-                        </div>
-                        <div className={classes.content}>
-                            <ShowMoreText
-                            lines={3}
-                            more='Show more'
-                            less='Show less'
-                            className={classes.contentCSS}
-                            anchorClass='my-anchor-css-class'
-                            onClick={this.executeOnClick}
-                            expanded={false}
-                            width={0}>
-                                <div>{this.props.content}</div>
-                            </ShowMoreText>
-                        </div>
+                    <div className={classes.title}>
+                        <h4>{this.props.title}</h4>
+                    </div>
+                    <div className={classes.content}>
+                        <ShowMoreText
+                        lines={3}
+                        more='Show more'
+                        less='Show less'
+                        className={classes.contentCSS}
+                        anchorClass='my-anchor-css-class'
+                        onClick={this.executeOnClick}
+                        expanded={false}
+                        width={0}>
+                            <div>{this.props.content}</div>
+                        </ShowMoreText>
+                    </div>
+                    <div className={classes.column3}>
                         <div className={classes.Info}>
                             <div>asked {changedDate}</div>
                             <div className={classes.Author}>{this.props.author}</div>
-                        </div>                    
+                        </div> 
+                    </div>                                           
                 </div>
                 
             </article>

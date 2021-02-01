@@ -13,6 +13,7 @@
     cursor: pointer;
     align-items: center;
     justify-content: space-between; 
+    font-size: medium ;
 }
 
 .Post .column {
@@ -35,15 +36,17 @@
 .Post .column2 .content {
     align-self: stretch;
 }
-/* .Post .column .column2 {
+
+.Post .column2 .column3 {
+    margin-top: 1em;
     display: flex;
     flex-direction: row;
-
-} */
+    /* align-items: center; */
+    justify-content: flex-end;
+}
 
 .Post:hover,
 .Post:active {
-    /* background-color: #C0DDF5; */
     border: 1px solid grey;
     background-color: rgba(221, 221, 221, 0.905);
 }
