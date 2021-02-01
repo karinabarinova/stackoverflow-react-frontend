@@ -10,7 +10,9 @@
 
 .NavigationItems .Dashboard {
     text-decoration: none;
-    color: rgb(165, 64, 64);
+    font-size: large;
+    color: white;
+    width: 200px;
     padding: 14px 18px;
     margin: 16px 0;
     border-left: 1px solid black;

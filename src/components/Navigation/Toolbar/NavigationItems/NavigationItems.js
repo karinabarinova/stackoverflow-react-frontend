@@ -1,5 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {  faUserCircle } from '@fortawesome/free-solid-svg-icons'
+
 
 import classes from './NavigationItems.module.css';
 import NavigationItem from './NavigationItem/NavigationItem';
@@ -20,7 +23,8 @@ const navigationItems = (props) => (
             ? <><NavigationItem link="/login">Sign In</NavigationItem>
             <NavigationItem link="/register">Sign Up</NavigationItem></>
             : <NavigationItem link="/logout">Log out</NavigationItem>}
-        {props.isAuthenticated ? <div><NavLink className={classes.Dashboard} to="/dashboard">{props.loggedInUser}</NavLink></div> : null}
+        {props.isAuthenticated ? <div><NavLink className={classes.Dashboard} to="/dashboard"><FontAwesomeIcon icon={faUserCircle} />
+{props.loggedInUser}</NavLink></div> : null}
     </ul>
 )
 
