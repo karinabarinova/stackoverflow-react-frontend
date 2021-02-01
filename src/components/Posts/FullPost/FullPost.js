@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './FullPost.css';
 import Comment from '../../Comment/Comment';
+import defaultUserAvatar from '../../../assets/images/default-avatar.png';
 
 class FullPost extends Component {
     state = {
         loadedPost: null,
-        CommentsUnderPost: []
+        CommentsUnderPost: [],
+        author: null
     }
 
     componentDidMount () {
@@ -24,6 +26,15 @@ class FullPost extends Component {
                     .then(res => {
                         console.log(res)
                         this.setState({loadedPost: res.data})
+                        axios.get('/users/' + this.state.loadedPost.author)
+                            .then(res => {
+                                // console.log(res.data);
+                                this.setState({ author: res.data})
+                            })
+                            .catch(e => {
+                                console.log("FULLPOST")
+                                console.log(e);
+                            })
                     })
                     .catch(e => {
                         console.log("Full Post")
@@ -55,7 +66,7 @@ class FullPost extends Component {
         
         if (post.props.id)
             post = <p style={{textAlign: 'center'}}>Loading...</p>;
-        if (this.state.loadedPost) {
+        if (this.state.loadedPost && this.state.author) {
             const date = new Date(this.state.loadedPost.publish_date);
             const changedDate = `${date.getUTCDate()}.${date.getUTCMonth() + 1}.${date.getUTCFullYear()} ${date.getUTCHours()}:${date.getUTCMinutes()}`;
         
@@ -86,7 +97,10 @@ class FullPost extends Component {
                         <div className="column3">
                         <div className="Info">
                             <div>asked {changedDate}</div>
-                            <div className="Author">{this.state.loadedPost.author}</div>
+                            {/* <div className="avatar">{this.state.loade}</div> */}
+                            <div className="avatar"><img src={ this.state.author.avatar ?  "http://localhost:3001/" + this.state.author.avatar.replace('resources', '') : defaultUserAvatar} target="_blank"/></div>
+
+                            <div className="Author">{this.state.author.fullName}</div>
                         </div> 
                     </div>      
                     <div className="Edit">
