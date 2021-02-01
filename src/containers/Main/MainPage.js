@@ -12,6 +12,7 @@ import Users from '../../components/Users/Users';
 import FullUser from '../../components/Users/FullUser/FullUser';
 import Login from '../Auth/Login';
 import Dashboard from '../../components/Dashboard/Dashboard';
+import NotFound from '../../components/404/404';
 
 
 import './MainPage.css';
@@ -35,7 +36,7 @@ class MainPage extends Component {
                     <Route path='/users/:id' exact component={FullUser} />
 
                     {/* <Route component={NotFound} */}
-                    <Route render={() => <h1>Page not found</h1>} />
+                    <Route component={NotFound} />
                 </Switch>
             </div>
         )

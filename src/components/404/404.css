@@ -1,0 +1,24 @@
+.notFound {
+    font-size:x-large;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.notFound img {
+    margin-top: 1em;
+    width: 25em;
+}
+
+.notFound .col1 {
+    background-color: rgba(245, 245, 245, .6);
+    margin: 1em;
+    padding: 1em;
+}
+
+.notFound .col2 {
+    margin: 1em;
+    padding: 1em;
+}
