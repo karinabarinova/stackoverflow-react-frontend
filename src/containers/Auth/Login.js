@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import Spinner from '../../components/Spinner/Spinner';
-import classes from './Auth.module.css';
+import classes from './Login.module.css';
 import * as actions from '../../store/index';
 
 class Login extends Component {
@@ -140,7 +140,7 @@ class Login extends Component {
             )
 
         return(
-            <div className={classes.Auth}>
+            <div className={classes.Login}>
                 {errorMessage}
                 <form onSubmit={this.submitHander}>
                     {form}
@@ -150,6 +150,10 @@ class Login extends Component {
                     clicked={this.switchAuthModeHandler}
                     btnType="Danger">Switch to SIGNUP
                 </Button>
+                <hr className={classes.hr} />
+                <div className={classes.forgot}>
+                    <a href="/forgot-password">Forgot Password?</a>
+                </div>
             </div>
         )
     }
