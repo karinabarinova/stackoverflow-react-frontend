@@ -1,7 +1,8 @@
 .Post {
     background-color: whitesmoke;
     display: flex;
-    flex-wrap: wrap;
+    width: 100%;
+    flex-wrap: nowrap;
     width: 80%;
     padding: 16px;
     text-align: center;
@@ -11,8 +12,34 @@
     box-sizing: border-box;
     cursor: pointer;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; 
 }
+
+.Post .column {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.Post .column2 {
+    flex: 1 1 auto;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.Post .column2 .content {
+    align-self: stretch;
+}
+/* .Post .column .column2 {
+    display: flex;
+    flex-direction: row;
+
+} */
 
 .Post:hover,
 .Post:active {
