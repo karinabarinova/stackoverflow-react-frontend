@@ -34,6 +34,7 @@ class Posts extends Component {
                         key={post.id}
                         id={post.id}
                         title={post.title}
+                        authorId={post.authorId}
                         content={post.content}
                         author={post.author}
                         rating={post.rating}
