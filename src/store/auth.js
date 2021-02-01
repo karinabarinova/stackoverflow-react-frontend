@@ -63,8 +63,7 @@ export const auth = (login, password, repeat_password, email, fullName, isSignup
         
         axios.post(url, authData)
             .then(res => {
-                console.log(res);
-                dispatch(authSuccess(res.data.token, res.data.id, res.data.login))
+                dispatch(authSuccess(res.data.jwtToken, res.data.id, res.data.login))
                 dispatch(checkAuthTimeout(res.data.expiresIn));
             })
             .catch(e => {
