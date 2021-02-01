@@ -1,7 +1,6 @@
 .Post {
     background-color: whitesmoke;
     display: flex;
-    width: 100%;
     flex-wrap: nowrap;
     width: 80%;
     padding: 16px;

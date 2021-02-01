@@ -52,29 +52,48 @@ class FullPost extends Component {
     render () {
         let post = <p style={{textAlign: 'center'}}>Please select a Post!</p>;
         let comments = null;
+        
         if (post.props.id)
             post = <p style={{textAlign: 'center'}}>Loading...</p>;
         if (this.state.loadedPost) {
+            const date = new Date(this.state.loadedPost.publish_date);
+            const changedDate = `${date.getUTCDate()}.${date.getUTCMonth() + 1}.${date.getUTCFullYear()} ${date.getUTCHours()}:${date.getUTCMinutes()}`;
+        
             post = (
                 <div className="FullPost">
-                    <div className="Postblock2">
-                        <div>
-                            <div className="arrowUp"></div>
-                            <span>{this.state.loadedPost.rating}</span>
-                            <div className="arrowDown"></div>
+                    <div className="column">
+                        <div className="Postblock2">
+                            <div>
+                                <div className="arrowUp"></div>
+                                <span>{this.state.loadedPost.rating}</span>
+                                <div className="arrowDown"></div>
+                            </div>
+                        </div>
+                        <div className="Postblock1">
+                            <div>
+                                <span>{this.state.loadedPost.rating}</span>
+                            </div>
+                            <div>Votes</div>
                         </div>
                     </div>
-                    <div className="Postblock1">
+                    <div className="column2">
                         <div>
-                            <span>{this.state.loadedPost.rating}</span>
+                            <h4>{this.state.loadedPost.title}</h4>
                         </div>
-                        <div>Votes</div>
-                    </div>
-                    <h1>{this.state.loadedPost.title}</h1>
-                    <p>{this.state.loadedPost.content}</p>
+                        <div>
+                            <div>{this.state.loadedPost.content}</div>
+                        </div>
+                        <div className="column3">
+                        <div className="Info">
+                            <div>asked {changedDate}</div>
+                            <div className="Author">{this.state.loadedPost.author}</div>
+                        </div> 
+                    </div>      
                     <div className="Edit">
                         <button onClick={this.deletePostHandler} className="Delete">Delete</button>
                     </div>
+                    </div>
+                    
                 </div>
     
             );
