@@ -1,5 +1,6 @@
 .User {
     display: flex;
+    background-color: whitesmoke;
     flex-wrap: wrap;
     flex: 0 0 25%;
     margin: 5px;

@@ -1,4 +1,5 @@
 .Post {
+    background-color: whitesmoke;
     display: flex;
     flex-wrap: wrap;
     width: 80%;
