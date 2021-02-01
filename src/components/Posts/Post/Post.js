@@ -8,7 +8,8 @@ class Post extends Component {
 
     state = {
         commentsCount: null,
-        authorAvatar: null
+        authorAvatar: null,
+        categories: []
     }
 
     componentDidMount () {
@@ -17,13 +18,21 @@ class Post extends Component {
                 const count = res.data.length;
                 this.setState({commentsCount: count})
                 axios.get('/users/' + this.props.authorId)
-                            .then(res => {
-                                this.setState({ authorAvatar: res.data.avatar})
-                            })
-                            .catch(e => {
-                                console.log("POST")
-                                console.log(e);
-                            })
+                    .then(res => {
+                        this.setState({ authorAvatar: res.data.avatar})
+                    })
+                    .catch(e => {
+                        console.log("POST")
+                        console.log(e);
+                    })
+            })
+            .catch(e => {
+                console.log(e);
+            })
+        axios.get('/posts/' + this.props.id + '/categories')
+            .then(res => {
+                // console.log(res.data[0].categories);
+                this.setState({ categories: res.data[0].categories})
             })
             .catch(e => {
                 console.log(e);
@@ -33,7 +42,12 @@ class Post extends Component {
     render() {
         const date = new Date(this.props.publish_date);
         const changedDate = `${date.getUTCDate()}.${date.getUTCMonth() + 1}.${date.getUTCFullYear()} ${date.getUTCHours()}:${date.getUTCMinutes()}`;
-        // console.log(this.state.authorAvatar);
+        console.log(this.state.categories);
+        let categories = null;
+        if (this.state.categories)
+            categories = this.state.categories.map(category => {
+                return  <div className={classes.categoryTitle}>{category.title}</div>
+            });
         // if (this.state.author)
         return (
             <article className={classes.Post} onClick={this.props.clicked}>
@@ -57,7 +71,7 @@ class Post extends Component {
                     </div>
                     <div className={classes.content}>
                         <ShowMoreText
-                        lines={3}
+                        lines={2}
                         more='Show more'
                         less='Show less'
                         className={classes.contentCSS}
@@ -69,6 +83,9 @@ class Post extends Component {
                         </ShowMoreText>
                     </div>
                     <div className={classes.column3}>
+                        <div className={classes.categories}>
+                            {categories}
+                        </div>
                         <div className={classes.Info}>
                             <div>asked {changedDate}</div>
                             <div className={classes.Author}>{this.props.author}</div>

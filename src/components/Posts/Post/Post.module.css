@@ -44,6 +44,31 @@
     justify-content: flex-end;
 }
 
+.Post .column2 .column3 .Info {
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+}
+
+.Post .column2 .column3 .categories {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 2em;
+    width: 100%;
+}
+
+.categoryTitle {
+
+    color: #39739d;
+    background-color: rgb(225, 236, 244);
+    border-radius: 5%;
+    padding: 5px;
+    margin: 5px;
+    height: 2em;
+}
+
 .Post .column2 .column3 img {
     width: 50px;
     height: 50px;
