@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
@@ -138,9 +139,14 @@ class Login extends Component {
             errorMessage = (
                 <p style={{textTransform: 'capitalize'}}>{this.props.error}</p>
             )
+        
+        let authRedirect = null;
+        if (this.props.isAuthenticated)
+                authRedirect = <Redirect to="/" />
 
         return(
             <div className={classes.Login}>
+                {authRedirect}
                 {errorMessage}
                 <form onSubmit={this.submitHander}>
                     {form}
@@ -162,7 +168,8 @@ class Login extends Component {
 const mapStateToProps = state => {
     return {
         loading: state.auth.loading,
-        error: state.auth.error
+        error: state.auth.error,
+        isAuthenticated: state.auth.jwtToken !== null
     };
 };
 

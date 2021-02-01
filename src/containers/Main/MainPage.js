@@ -13,11 +13,15 @@ import FullUser from '../../components/Users/FullUser/FullUser';
 import Login from '../Auth/Login';
 import Dashboard from '../../components/Dashboard/Dashboard';
 import NotFound from '../../components/404/404';
-
+import { connect } from 'react-redux';
+import * as actions from '../../store/index';
 
 import './MainPage.css';
 
 class MainPage extends Component {
+    componentDidMount() {
+        this.props.onTryAutoSignup();
+    }
     render() {
         return (
             <div className="MainPage">
@@ -43,4 +47,10 @@ class MainPage extends Component {
     }
 }
 
-export default MainPage;
+const mapDispatchToProps = dispatch => {
+    return {
+        onTryAutoSignup: () => dispatch(actions.authCheckState())
+    }
+}
+
+export default connect(null, mapDispatchToProps)(MainPage);
