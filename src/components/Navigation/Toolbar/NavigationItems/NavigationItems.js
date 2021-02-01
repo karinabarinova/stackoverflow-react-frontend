@@ -24,7 +24,7 @@ const navigationItems = (props) => (
             <NavigationItem link="/register">Sign Up</NavigationItem></>
             : <NavigationItem link="/logout">Log out</NavigationItem>}
         {props.isAuthenticated ? <div><NavLink className={classes.Dashboard} to="/dashboard"><FontAwesomeIcon icon={faUserCircle} />
-{props.loggedInUser}</NavLink></div> : null}
+{localStorage.getItem('username')}</NavLink></div> : null}
     </ul>
 )
 

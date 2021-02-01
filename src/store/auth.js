@@ -27,6 +27,8 @@ export const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('expirationDate')
     localStorage.removeItem('userId')
+    localStorage.removeItem('username');
+
     return {
         type: actionTypes.AUTH_LOGOUT
     }
@@ -66,11 +68,11 @@ export const auth = (login, password, repeat_password, email, fullName, isSignup
         
         axios.post(url, authData)
             .then(res => {
-                console.log(res.data)
                 const expirationDate = new Date(new Date().getTime() + res.data.expiresIn * 1000);
                 localStorage.setItem('token', res.data.jwtToken);
                 localStorage.setItem('expirationDate', expirationDate );
                 localStorage.setItem('userId', res.data.id);
+                localStorage.setItem('username', res.data.login);
                 dispatch(authSuccess(res.data.jwtToken, res.data.id, res.data.login))
                 dispatch(checkAuthTimeout(res.data.expiresIn));
             })
