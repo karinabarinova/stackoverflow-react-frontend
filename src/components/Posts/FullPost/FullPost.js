@@ -8,7 +8,8 @@ class FullPost extends Component {
     state = {
         loadedPost: null,
         CommentsUnderPost: [],
-        author: null
+        author: null,
+        needsUpdate: false
     }
 
     componentDidMount () {
@@ -21,11 +22,12 @@ class FullPost extends Component {
 
     loadData = () => {
         if (this.props.match.params.id)
-            if (!this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== +this.props.match.params.id)) {
+            if (!this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== +this.props.match.params.id)
+            || (this.state.loadedPost && this.state.needsUpdate)) {
                 axios.get('/posts/' + this.props.match.params.id)
                     .then(res => {
-                        console.log(res)
                         this.setState({loadedPost: res.data})
+                        this.setState({needsUpdate: false});
                         axios.get('/users/' + this.state.loadedPost.author)
                             .then(res => {
                                 // console.log(res.data);
@@ -60,6 +62,44 @@ class FullPost extends Component {
             .catch()
     }    
 
+    postLikeHandler(id) {
+        axios.post('/posts/' + id + '/like', { 
+            "type": "like" 
+        }, {headers: {
+            'authorization': `Basic ${localStorage.getItem('token')}`
+        }})
+            .then (res => {
+                this.setState(prevState => {
+                    let post = Object.assign({}, prevState.loadedPost);
+                    post.rating = post.rating++;
+                    return post;
+                });
+                this.setState({ needsUpdate: true});
+            })
+            .catch(e => {
+                console.log(e)
+            })
+    }
+
+    postDislikeHandler(id) {
+        axios.post('/posts/' + id + '/like', { 
+            "type": "dislike" 
+        }, {headers: {
+            'authorization': `Basic ${localStorage.getItem('token')}`
+        }})
+            .then (res => {
+                this.setState(prevState => {
+                    let post = Object.assign({}, prevState.loadedPost);
+                    post.rating = post.rating++;
+                    return post;
+                });
+                this.setState({ needsUpdate: true});
+            })
+            .catch(e => {
+                console.log(e)
+            })
+    }
+
     render () {
         let post = <p style={{textAlign: 'center'}}>Please select a Post!</p>;
         let comments = null;
@@ -75,9 +115,9 @@ class FullPost extends Component {
                     <div className="column">
                         <div className="Postblock2">
                             <div>
-                                <div className="arrowUp"></div>
+                                <div onClick={() => this.postLikeHandler(this.state.loadedPost.id)} className="arrowUp"></div>
                                 <span>{this.state.loadedPost.rating}</span>
-                                <div className="arrowDown"></div>
+                                <div onClick={() => this.postDislikeHandler(this.state.loadedPost.id)} className="arrowDown"></div>
                             </div>
                         </div>
                         <div className="Postblock1">
