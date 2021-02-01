@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import ShowMoreText from 'react-show-more-text';
 import classes from './Post.module.css';
 
 class Post extends Component {
@@ -44,6 +45,17 @@ class Post extends Component {
                     <div>Answers</div>
                 </div>
                 <h1>{this.props.title}</h1>
+                <ShowMoreText
+                lines={3}
+                more='Show more'
+                less='Show less'
+                className={classes.contentCSS}
+                anchorClass='my-anchor-css-class'
+                onClick={this.executeOnClick}
+                expanded={false}
+                width={280}>
+                    <div>{this.props.content}</div>
+                </ShowMoreText>
                 <div className={classes.Info}>
                     <div>asked {changedDate}</div>
                     <div className={classes.Author}>{this.props.author}</div>

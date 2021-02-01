@@ -29,10 +29,12 @@ class Posts extends Component {
         let posts = <p style={{textAlign: "center"}}>Something went wrong!</p>
         if (!this.state.error) {
             posts = this.state.posts.map(post => {
+                console.log(post)
                 return <Post 
                         key={post.id}
                         id={post.id}
                         title={post.title}
+                        content={post.content}
                         author={post.author}
                         rating={post.rating}
                         publish_date={post.publish_date}
