@@ -28,7 +28,8 @@ export const logout = () => {
     localStorage.removeItem('expirationDate')
     localStorage.removeItem('userId')
     localStorage.removeItem('username');
-
+    localStorage.removeItem('avatar');
+    
     return {
         type: actionTypes.AUTH_LOGOUT
     }
@@ -73,6 +74,7 @@ export const auth = (login, password, repeat_password, email, fullName, isSignup
                 localStorage.setItem('expirationDate', expirationDate );
                 localStorage.setItem('userId', res.data.id);
                 localStorage.setItem('username', res.data.login);
+                localStorage.setItem('avatar', res.data.avatar);
                 dispatch(authSuccess(res.data.jwtToken, res.data.id, res.data.login))
                 dispatch(checkAuthTimeout(res.data.expiresIn));
             })
