@@ -74,6 +74,7 @@ class Login extends Component {
         event.preventDefault();
         this.props.onAuth(this.state.controls.login.value, this.state.controls.password.value,
             null, this.state.controls.email.value, null, false);
+        this.props.history.push('/');
     }
 
     switchAuthModeHandler = () => {

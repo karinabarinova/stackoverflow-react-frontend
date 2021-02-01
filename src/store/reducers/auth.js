@@ -2,7 +2,7 @@ import * as actionTypes from '../actionTypes';
 import { updateObject } from '../utility';
 
 const initialState = {
-    token: null,
+    jwtToken: null,
     id: null,
     error: null,
     loading: false,
