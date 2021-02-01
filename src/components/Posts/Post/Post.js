@@ -42,13 +42,12 @@ class Post extends Component {
     render() {
         const date = new Date(this.props.publish_date);
         const changedDate = `${date.getUTCDate()}.${date.getUTCMonth() + 1}.${date.getUTCFullYear()} ${date.getUTCHours()}:${date.getUTCMinutes()}`;
-        console.log(this.state.categories);
         let categories = null;
         if (this.state.categories)
             categories = this.state.categories.map(category => {
-                return  <div className={classes.categoryTitle}>{category.title}</div>
+                return  <div key={category.id} className={classes.categoryTitle}>{category.title}</div>
             });
-        // if (this.state.author)
+
         return (
             <article className={classes.Post} onClick={this.props.clicked}>
                 <div className={classes.column}>
