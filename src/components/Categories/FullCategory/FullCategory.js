@@ -72,10 +72,12 @@ class FullCategory extends Component {
         }
         if (this.state.postsUnderCategory.length) {
             posts = this.state.postsUnderCategory.map(post => {
+                console.log("POSTTT",post)
                 return <Post 
                         key={post.id}
                         title={post.title}
                         id={post.id}
+                        authorId = {post.author}
                         author={post.author} //TODO: incorrect author
                         rating={post.rating}
                         publish_date={post.publish_date}
