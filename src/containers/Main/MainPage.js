@@ -23,14 +23,26 @@ class MainPage extends Component {
         this.props.onTryAutoSignup();
     }
     render() {
-        return (
-            <div className="MainPage">
-                <Layout/>
+        let routes = (
+            <Switch>
+                <Route path="/" exact component={Posts}/>
+                <Route path="/register" component={Auth} />
+                <Route path="/login" component={Login} />
+                <Route path='/categories' exact component={Categories} />
+                <Route path='/users' exact component={Users} />
+                <Route path="/posts/:id" exact component={FullPost} />
+                <Route path="/categories/:id" exact component={FullCategory} />
+                <Route path='/users/:id' exact component={FullUser} />
+                <Route component={NotFound} />
+
+            </Switch>
+        );
+        
+        if (this.props.isAuthenticated) {
+            routes = (
                 <Switch>
                     <Route path="/" exact component={Posts}/>
                     <Route path="/new-post" component={NewPost} />
-                    <Route path="/register" component={Auth} />
-                    <Route path="/login" component={Login} />
                     <Route path='/logout' component={Logout} />
                     <Route path='/categories' exact component={Categories} />
                     <Route path='/users' exact component={Users} />
@@ -38,19 +50,30 @@ class MainPage extends Component {
                     <Route path="/posts/:id" exact component={FullPost} />
                     <Route path="/categories/:id" exact component={FullCategory} />
                     <Route path='/users/:id' exact component={FullUser} />
-
-                    {/* <Route component={NotFound} */}
                     <Route component={NotFound} />
+
                 </Switch>
+            );
+        }
+        return (
+            <div className="MainPage">
+                <Layout/>
+                {routes}
             </div>
         )
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.auth.jwtToken != null
+    };
+};
+
 const mapDispatchToProps = dispatch => {
     return {
         onTryAutoSignup: () => dispatch(actions.authCheckState())
-    }
-}
+    };
+};
 
-export default connect(null, mapDispatchToProps)(MainPage);
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
