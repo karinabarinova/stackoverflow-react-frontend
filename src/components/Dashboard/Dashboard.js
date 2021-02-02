@@ -90,7 +90,9 @@ class Dashboard extends Component {
                         <p><b>Full name:</b> {this.state.user.fullName}</p>
                         <p><b>Your rating:</b> {this.state.user.rating}</p>
                     </div>
-                    <Button btnType="DashboardSuccess">Upload Avatar</Button>
+                    <label className={classes.UploadAvatar}><input type="file" single/></label>
+                    
+                    {/* <Button btnType="DashboardSuccess">Upload Avatar</Button> */}
                     <Button btnType="DashboardDanger">Change Password</Button>
                 </div>
                 <div className={classes.Content}>

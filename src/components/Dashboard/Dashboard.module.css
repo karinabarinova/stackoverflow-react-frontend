@@ -10,6 +10,28 @@
     height: 100px;
 }
 
+.Dashboard  .Info .UploadAvatar { 
+    border-radius: 1ch;
+    text-align: center;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    font: inherit;
+    padding: 10px;
+    margin: 10px;
+    width: 30%;
+    margin-top: 2em;
+    border: 1px solid #27363b;
+    background-color: #27363b;
+}
+
+/* .Dashboard .Info #file-upload-button { 
+    width: 30%;
+    margin-top: 2em;
+    border: 1px solid #27363b;
+    background-color: #27363b;
+} */
+
 .Dashboard .Content { 
     display: flex;
     flex-direction: row;
