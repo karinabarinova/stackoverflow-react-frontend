@@ -101,7 +101,7 @@ class FullPost extends Component {
     }
 
     render () {
-        let post = <p style={{textAlign: 'center'}}>Please select a Post!</p>;
+        let post = <p style={{textAlign: 'center'}}>Post Not Found!</p>;
         let comments = null;
         
         if (post.props.id)

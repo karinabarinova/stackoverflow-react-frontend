@@ -31,7 +31,7 @@ class FullUser extends Component {
     }
 
     render () {
-        let user = <p style={{textAlign: 'center'}}>Please select a User!</p>;
+        let user = <p style={{textAlign: 'center'}}>User Not Found</p>;
         if (user.props.id)
             user = <p style={{textAlign: 'center'}}>Loading...</p>;
         if (this.state.loadedUser) {

@@ -13,6 +13,7 @@ import FullUser from '../../components/Users/FullUser/FullUser';
 import Login from '../Auth/Login';
 import Dashboard from '../../components/Dashboard/Dashboard';
 import NotFound from '../../components/404/404';
+import ResetPassword from '../Auth/ResetPassword';
 import { connect } from 'react-redux';
 import * as actions from '../../store/index';
 
@@ -30,6 +31,7 @@ class MainPage extends Component {
                 <Route path="/login" component={Login} />
                 <Route path='/categories' exact component={Categories} />
                 <Route path='/users' exact component={Users} />
+                <Route path='/forgot-password' exact component={ResetPassword} />
                 <Route path="/posts/:id" exact component={FullPost} />
                 <Route path="/categories/:id" exact component={FullCategory} />
                 <Route path='/users/:id' exact component={FullUser} />

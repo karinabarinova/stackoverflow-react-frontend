@@ -54,7 +54,7 @@ class FullCategory extends Component {
 
 
     render () {
-        let category = <p style={{textAlign: 'center'}}>Please select a Category!</p>;
+        let category = <p style={{textAlign: 'center'}}>Category Not Found!</p>;
         let posts = null;
         if (category.props.id)
             category = <p style={{textAlign: 'center'}}>Loading...</p>;

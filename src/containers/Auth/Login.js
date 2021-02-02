@@ -81,6 +81,9 @@ class Login extends Component {
         this.props.history.push('/register');
 
     }
+    switchForgotPassword = () => {
+        this.props.history.push('/forgot-password');
+    }
 
     render() {
         const formElementsArray = [];
@@ -130,7 +133,10 @@ class Login extends Component {
                 </Button>
                 <hr className={classes.hr} />
                 <div className={classes.forgot}>
-                    <a href="/forgot-password">Forgot Password?</a>
+                    <Button 
+                        clicked={this.switchForgotPassword}
+                        btnType="ForgotPassword">Forgot Password?
+                    </Button>
                 </div>
             </div>
         )
