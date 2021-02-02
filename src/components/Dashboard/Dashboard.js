@@ -11,7 +11,8 @@ class Dashboard extends Component {
         questions: [],
         answers: [],
         user: {},
-        error: false
+        error: false,
+        avatar: {}
     }
 
     componentDidMount() {
@@ -48,6 +49,33 @@ class Dashboard extends Component {
 
     postSelectedHandler = (id) => {
         this.props.history.push('/posts/' + id);
+    }
+
+    handlerInputChange = (event) => {
+        event.preventDefault();
+        this.setState({
+            avatar: event.target.files[0] 
+        })
+    }
+
+    submitHander = (event) => {
+        event.preventDefault();
+        let formData = new FormData();
+        formData.append('avatar', this.state.avatar);
+        const config = {
+            headers: { 
+                'Content-type': 'multipart/form-data',
+                'authorization': `Basic ${localStorage.getItem('token')}`
+            }
+        }
+
+        axios.post('/users/avatar', formData, config)
+            .then(res => {
+                console.log(res);
+            })
+            .catch(e => {
+                console.log(e)
+            })
     }
 
     render() {
@@ -90,7 +118,12 @@ class Dashboard extends Component {
                         <p><b>Full name:</b> {this.state.user.fullName}</p>
                         <p><b>Your rating:</b> {this.state.user.rating}</p>
                     </div>
-                    <label className={classes.UploadAvatar}><input type="file" single/></label>
+                    <form onSubmit={(e) => this.submitHander(e)} enctype="multipart/form-data">
+                        <label className={classes.UploadAvatar}>Upload Avatar 
+                            <input type="file" single onChange={(e) => this.handlerInputChange(e)} name="avatar" accept="image/*" />
+                        </label>
+                        <Button btnType="DashboardSuccess">Submit Avatar</Button>
+                    </form>
                     
                     {/* <Button btnType="DashboardSuccess">Upload Avatar</Button> */}
                     <Button btnType="DashboardDanger">Change Password</Button>
