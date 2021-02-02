@@ -1,8 +1,28 @@
 .Dashboard {
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .Dashboard .Info img {
     width: 100px;
     height: 100px;
+}
+
+.Dashboard .Content { 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.Dashboard .Content .questions {
+    border: 1px solid black;
+
+}
+
+.Dashboard .Content .answers {
+    border: 1px solid black;
+
 }
