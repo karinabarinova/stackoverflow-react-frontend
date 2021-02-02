@@ -21,7 +21,20 @@
     background-color: #27363b;
 }
 
+.DashboardSuccess {
+    width: 20%;
+    margin-top: 2em;
+    border: 1px solid #27363b;
+    background-color: #27363b;
+}
+
 .Danger {
+    border: 1px solid #75b2ad;
+    background-color: #75b2ad;
+}
+
+.DashboardDanger {
+    width: 20%;
     border: 1px solid #75b2ad;
     background-color: #75b2ad;
 }
