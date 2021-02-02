@@ -15,6 +15,7 @@ import Dashboard from '../../components/Dashboard/Dashboard';
 import NotFound from '../../components/404/404';
 import ResetPassword from '../Auth/ResetPassword';
 import ConfirmResetPassword from '../Auth/ConfirmResetPassword';
+import VerifyEmail from '../Auth/VerifyEmail';
 import { connect } from 'react-redux';
 import * as actions from '../../store/index';
 
@@ -32,6 +33,7 @@ class MainPage extends Component {
                 <Route path="/login" component={Login} />
                 <Route path='/categories' exact component={Categories} />
                 <Route path='/users' exact component={Users} />
+                <Route path='/verify-email' exact component={VerifyEmail} />
                 <Route path='/forgot-password' exact component={ResetPassword} />
                 <Route path='/confirm-reset-password' exact component={ConfirmResetPassword} />
                 <Route path="/posts/:id" exact component={FullPost} />

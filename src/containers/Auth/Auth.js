@@ -99,6 +99,8 @@ class Auth extends Component {
         event.preventDefault();
         this.props.onAuth(this.state.controls.login.value, this.state.controls.password.value,
             this.state.controls.repeat_password.value, this.state.controls.email.value, this.state.controls.fullName.value, true);
+        this.props.history.push('/verify-email');
+
     }
 
     switchAuthModeHandler = () => {
