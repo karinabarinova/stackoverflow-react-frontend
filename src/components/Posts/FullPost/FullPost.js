@@ -61,14 +61,17 @@ class FullPost extends Component {
                 'authorization': `Basic ${localStorage.getItem('token')}`
             }
         }
-
-        axios.delete('/posts/' + this.props.match.params.id, config)
-            .then(res => {
-                this.props.history.push('/');
-            })
-            .catch(e => {
-                console.log(e);
-            })
+        const res = window.confirm('Are you sure you want to delete your post?')
+        
+        if (res) {
+            axios.delete('/posts/' + this.props.match.params.id, config)
+                .then(res => {
+                    this.props.history.push('/');
+                })
+                .catch(e => {
+                    console.log(e);
+                })
+        }
     }
     subscribePostHandler = () => {
         axios.post('/posts/' + this.props.match.params.id + '/subscribe') //TODO: Pass auth token
