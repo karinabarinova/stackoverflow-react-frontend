@@ -38,10 +38,6 @@ class NewPost extends Component {
                 <textarea rows="4" value={this.state.content} onChange={(event) => this.setState({content: event.target.value})} />
                 <label>Categories</label>
                 <input type="text" value={this.state.categories} onChange={(event) => this.setState({categories: event.target.value})} />
-                {/* <select value={this.state.categories} onChange={(event) => this.setState({categories: event.target.value})}>
-                    <option value="Max">Max</option>
-                    <option value="Manu">Manu</option>
-                </select> */}
                 <button onClick={this.postDataHandler}>Add Post</button>
             </div>
         )

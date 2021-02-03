@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './FullPost.css';
 import Comment from '../../Comment/Comment';
+import { connect } from 'react-redux';
 import defaultUserAvatar from '../../../assets/images/default-avatar.png';
 
 class FullPost extends Component {
@@ -59,6 +60,11 @@ class FullPost extends Component {
             .then(res => {
                 // console.log(res)
             })
+            .catch()
+    }
+    subscribePostHandler = () => {
+        axios.post('/posts/' + this.props.match.params.id + '/subscribe') //TODO: Pass auth token
+            .then()
             .catch()
     }    
 
@@ -143,7 +149,8 @@ class FullPost extends Component {
                         </div> 
                     </div>      
                     <div className="Edit">
-                        <button onClick={this.deletePostHandler} className="Delete">Delete</button>
+                        <button onClick={this.subscribePostHandler}>Subscribe</button>
+                        {this.state.author.login === this.props.loggedInUser ? <button onClick={this.deletePostHandler} className="Delete">Delete</button> : null}
                     </div>
                     </div>
                     
@@ -171,4 +178,11 @@ class FullPost extends Component {
     }
 }
 
-export default FullPost;
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.auth.jwtToken !== null,
+        loggedInUser: state.auth.login
+    };
+};
+
+export default connect(mapStateToProps)(FullPost);
