@@ -24,12 +24,21 @@
     flex-direction: column;
     width: 100%;
     align-items: flex-end;
-    justify-content: flex-end;
+    /* justify-content: space-between; */
 }
 
 .Comment .aboutAuthor .Info {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+}
+
+.Comment .aboutAuthor .Info .Buttons {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-right: 10%;
+    align-content: flex-start;
+    align-items:baseline;
 }
 
 .Comment .aboutAuthor .Info img {
