@@ -102,6 +102,26 @@ class FullPost extends Component {
             })
     }
 
+    commentSubmitHandler = (event) => {
+        event.preventDefault();
+        const content = this.state.commentContent;
+        let data = '';
+        const config = {
+            headers: {
+                'authorization': `Basic ${localStorage.getItem('token')}`
+            }
+        }
+
+        if (content.length) {
+            data = { content };
+            axios.post("/posts/" + this.state.loadedPost.id + '/comments', data, config)
+                .then(res => {
+                    this.setState({commentContent: '', needsUpdate: true})
+                })
+                .catch(err => console.log(err))
+        }
+    }
+
     postDislikeHandler(id) {
         axios.post('/posts/' + id + '/like', { 
             "type": "dislike" 
@@ -192,14 +212,16 @@ class FullPost extends Component {
                 {post}
                 <div className="Comments">{comments}</div>
                 <div className="newComment">
-                    <h4>Your answer</h4>
-                    <textarea
-                        cols="92"
-                        rows="15"
-                        tabIndex="101"
-                        onChange={(event) => this.setState({commentContent: event.target.value})}></textarea>
-                    <Button btnType="CommentSuccess">Post your answer</Button>
-
+                    <form onSubmit={this.commentSubmitHandler}>
+                        <h4>Your answer</h4>
+                        <textarea
+                            cols="92"
+                            rows="15"
+                            tabIndex="101"
+                            value={this.state.commentContent}
+                            onChange={(event) => this.setState({commentContent: event.target.value})}></textarea>
+                        <Button btnType="CommentSuccess" type="submit">Post your answer</Button>
+                    </form>
                 </div>
             </div>
         );
