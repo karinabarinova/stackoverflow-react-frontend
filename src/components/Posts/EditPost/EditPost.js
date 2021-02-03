@@ -11,7 +11,6 @@ class EditPost extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props);
         if (this.props.location.state && this.props.location.state.editPost) {
             this.setState({
                 id: this.props.location.state.editPost.id,
