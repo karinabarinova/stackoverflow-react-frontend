@@ -28,6 +28,13 @@
     background-color: #27363b;
 }
 
+.CommentSuccess {
+    width: 20%;
+    margin-top: 2em;
+    border: 1px solid #27363b;
+    background-color: #27363b;
+}
+
 .Danger {
     border: 1px solid #75b2ad;
     background-color: #75b2ad;

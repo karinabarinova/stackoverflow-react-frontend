@@ -10,6 +10,25 @@
     text-align: center;
 } */
 
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.container textarea {
+    border: 1px solid lightgray;
+    background-color: whitesmoke;
+    padding: 2%;
+}
+
+.container .newComment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* align-content: center; */
+}
+
 .FullPost {
     background-color: whitesmoke;
         display: flex;

@@ -5,13 +5,15 @@ import Comment from '../../Comment/Comment';
 import { connect } from 'react-redux';
 import defaultUserAvatar from '../../../assets/images/default-avatar.png';
 import { Link } from 'react-router-dom';
+import Button from '../../Button/Button';
 
 class FullPost extends Component {
     state = {
         loadedPost: null,
         CommentsUnderPost: [],
         author: {},
-        needsUpdate: false
+        needsUpdate: false,
+        commentContent: ''
     }
 
     componentDidMount () {
@@ -186,9 +188,19 @@ class FullPost extends Component {
             }
         }
         return (
-            <div>
+            <div className="container">
                 {post}
                 <div className="Comments">{comments}</div>
+                <div className="newComment">
+                    <h4>Your answer</h4>
+                    <textarea
+                        cols="92"
+                        rows="15"
+                        tabIndex="101"
+                        onChange={(event) => this.setState({commentContent: event.target.value})}></textarea>
+                    <Button btnType="CommentSuccess">Post your answer</Button>
+
+                </div>
             </div>
         );
     }
