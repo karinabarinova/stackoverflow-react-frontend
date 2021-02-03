@@ -54,6 +54,7 @@
     border-right: 20px solid transparent;   
     border-bottom: 20px solid lightgray;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .arrowDown {
@@ -63,4 +64,5 @@
     border-right: 20px solid transparent;
     border-top: 20px solid lightgray;
     margin-top: 10px;
+    cursor: pointer;
 }

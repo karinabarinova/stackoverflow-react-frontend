@@ -174,6 +174,7 @@ class FullPost extends Component {
                 comments = this.state.CommentsUnderPost.map(comment => {
                     return <Comment 
                             key={comment.id}
+                            id={comment.id}
                             content={comment.content}
                             author={comment.author} //TODO: incorrect author
                             publish_date={comment.publish_date}
