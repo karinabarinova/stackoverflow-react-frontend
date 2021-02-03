@@ -56,11 +56,19 @@ class FullPost extends Component {
     }
 
     deletePostHandler = () => {
-        axios.delete('/posts/' + this.props.match.params.id)
+        const config = {
+            headers: {
+                'authorization': `Basic ${localStorage.getItem('token')}`
+            }
+        }
+
+        axios.delete('/posts/' + this.props.match.params.id, config)
             .then(res => {
-                // console.log(res)
+                this.props.history.push('/');
             })
-            .catch()
+            .catch(e => {
+                console.log(e);
+            })
     }
     subscribePostHandler = () => {
         axios.post('/posts/' + this.props.match.params.id + '/subscribe') //TODO: Pass auth token
