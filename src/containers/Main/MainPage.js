@@ -16,6 +16,7 @@ import NotFound from '../../components/404/404';
 import ResetPassword from '../Auth/ResetPassword';
 import ConfirmResetPassword from '../Auth/ConfirmResetPassword';
 import VerifyEmail from '../Auth/VerifyEmail';
+import EditPost from '../../components/Posts/EditPost/EditPost';
 import { connect } from 'react-redux';
 import * as actions from '../../store/index';
 
@@ -53,6 +54,7 @@ class MainPage extends Component {
                     <Route path='/categories' exact component={Categories} />
                     <Route path='/users' exact component={Users} />
                     <Route path='/dashboard' exact component={Dashboard} />
+                    <Route path='/editpost/:id' exact component={EditPost} />
                     <Route path="/posts/:id" exact component={FullPost} />
                     <Route path="/categories/:id" exact component={FullCategory} />
                     <Route path='/users/:id' exact component={FullUser} />

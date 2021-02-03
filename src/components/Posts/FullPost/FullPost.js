@@ -4,6 +4,7 @@ import './FullPost.css';
 import Comment from '../../Comment/Comment';
 import { connect } from 'react-redux';
 import defaultUserAvatar from '../../../assets/images/default-avatar.png';
+import { Link } from 'react-router-dom';
 
 class FullPost extends Component {
     state = {
@@ -31,7 +32,6 @@ class FullPost extends Component {
                         this.setState({needsUpdate: false});
                         axios.get('/users/' + this.state.loadedPost.author)
                             .then(res => {
-                                // console.log(res.data);
                                 this.setState({ author: res.data})
                             })
                             .catch(e => {
@@ -124,6 +124,7 @@ class FullPost extends Component {
         if (post.props.id)
             post = <p style={{textAlign: 'center'}}>Loading...</p>;
         if (this.state.loadedPost && this.state.author) {
+            const editPost = this.state.loadedPost;
             const date = new Date(this.state.loadedPost.publish_date);
             const changedDate = `${date.getUTCDate()}.${date.getUTCMonth() + 1}.${date.getUTCFullYear()} ${date.getUTCHours()}:${date.getUTCMinutes()}`;
         
@@ -161,6 +162,7 @@ class FullPost extends Component {
                     </div>      
                     <div className="Edit">
                         <button onClick={this.subscribePostHandler}>Subscribe</button>
+                        {this.state.author.login === this.props.loggedInUser ? <Link to={{pathname: '/editpost/' + this.props.match.params.id, state: {editPost} }}><button onClick={this.editPostHandler} className="Edit">Edit</button></Link> : null}
                         {this.state.author.login === this.props.loggedInUser ? <button onClick={this.deletePostHandler} className="Delete">Delete</button> : null}
                     </div>
                     </div>

@@ -43,6 +43,17 @@
         align-items: stretch;
         justify-content: center;
     }
+
+    .FullPost .column2 input {
+        border: none;
+        display: inline;
+        font-family: inherit;
+        font-size: inherit;
+        padding: none;
+        width: auto;
+        font-weight: 600;
+        background-color: whitesmoke;
+    }
     
     .FullPost .column2 .content {
         align-self: stretch;
