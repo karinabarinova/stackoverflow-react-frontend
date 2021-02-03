@@ -162,7 +162,7 @@ class FullPost extends Component {
                     </div>      
                     <div className="Edit">
                         <button onClick={this.subscribePostHandler}>Subscribe</button>
-                        {this.state.author.login === this.props.loggedInUser ? <Link to={{pathname: '/editpost/' + this.props.match.params.id, state: {editPost} }}><button onClick={this.editPostHandler} className="Edit">Edit</button></Link> : null}
+                        {this.state.author.login === this.props.loggedInUser ? <Link to={{pathname: '/editpost/' + this.props.match.params.id, state: {editPost, from: this.props.location.pathname} }}><button onClick={this.editPostHandler} className="Edit">Edit</button></Link> : null}
                         {this.state.author.login === this.props.loggedInUser ? <button onClick={this.deletePostHandler} className="Delete">Delete</button> : null}
                     </div>
                     </div>

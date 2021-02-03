@@ -11,13 +11,16 @@ class EditPost extends Component {
     }
 
     componentDidMount() {
-        if (this.props.location.state.editPost) {
+        console.log(this.props);
+        if (this.props.location.state && this.props.location.state.editPost) {
             this.setState({
                 id: this.props.location.state.editPost.id,
                 title: this.props.location.state.editPost.title,
                 content: this.props.location.state.editPost.content,
                 status: this.props.location.state.editPost.status
             })
+        } else {
+            this.props.history.goBack();
         }
     }
 
