@@ -1,4 +1,4 @@
-import React, { Component, useContext, useState } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import '../NewPost/NewPost.css';
 

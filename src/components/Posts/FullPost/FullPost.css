@@ -151,3 +151,15 @@
         margin-top: 10px;
     }
     
+.ErrorMessage {
+    
+    border: 1px solid;
+    margin: 10px auto;
+    width: 80%;
+	padding: 15px 10px 15px 50px;
+	background-repeat: no-repeat;
+    background-position: 10px center;
+    color: #D8000C;
+	background-color: #FFBABA;
+	background-image: url('https://i.imgur.com/GnyDvKN.png');
+}

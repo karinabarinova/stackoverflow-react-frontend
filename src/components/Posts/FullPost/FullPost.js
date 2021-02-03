@@ -13,7 +13,8 @@ class FullPost extends Component {
         CommentsUnderPost: [],
         author: {},
         needsUpdate: false,
-        commentContent: ''
+        commentContent: '',
+        errorMessage: ''
     }
 
     componentDidMount () {
@@ -38,23 +39,18 @@ class FullPost extends Component {
                                 this.setState({ author: res.data})
                             })
                             .catch(e => {
-                                console.log("FULLPOST")
-                                console.log(e);
+                                this.setState({errorMessage: e.response.data.message})
                             })
                     })
                     .catch(e => {
-                        console.log("Full Post")
-                        console.log(e);
+                        this.setState({errorMessage: e.response.data.message})
                     })
                 axios.get('/posts/' + +this.props.match.params.id + '/comments')
                     .then(res => {
-                        // console.log(res);
-                        console.log(res.data)
                         this.setState({ CommentsUnderPost: res.data})
                     })
                     .catch(e => {
-                        console.log("Full Post")
-                        console.log(e)
+                        this.setState({errorMessage: e.response.data.message})
                     })
         }       
     }
@@ -73,11 +69,11 @@ class FullPost extends Component {
                     this.props.history.push('/');
                 })
                 .catch(e => {
-                    console.log(e);
+                    this.setState({errorMessage: e.response.data.message})
                 })
         }
     }
-    
+
     subscribePostHandler = () => {
         axios.post('/posts/' + this.props.match.params.id + '/subscribe') //TODO: Pass auth token
             .then()
@@ -99,7 +95,7 @@ class FullPost extends Component {
                 this.setState({ needsUpdate: true});
             })
             .catch(e => {
-                console.log(e)
+                this.setState({errorMessage: e.response.data.message})
             })
     }
 
@@ -119,7 +115,7 @@ class FullPost extends Component {
                 .then(res => {
                     this.setState({commentContent: '', needsUpdate: true})
                 })
-                .catch(err => console.log(err))
+                .catch(e => this.setState({errorMessage: e.response.data.message}))
         }
     }
 
@@ -138,7 +134,7 @@ class FullPost extends Component {
                 this.setState({ needsUpdate: true});
             })
             .catch(e => {
-                console.log(e)
+                this.setState({errorMessage: e.response.data.message})
             })
     }
 
@@ -208,8 +204,12 @@ class FullPost extends Component {
                 })
             }
         }
+        let errorMessage = null;
+        if (this.state.errorMessage)
+            errorMessage = <p className="ErrorMessage">{this.state.errorMessage}</p>
         return (
             <div className="container">
+                {errorMessage}
                 {post}
                 <div className="Comments">{comments}</div>
                 <div className="newComment">
