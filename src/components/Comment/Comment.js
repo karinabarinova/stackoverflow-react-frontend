@@ -7,6 +7,7 @@ class Comment extends Component {
     state = {
         author: {},
         comment: {},
+        errorMessage: ''
         // needsUpdate: 
     };
 
@@ -16,11 +17,13 @@ class Comment extends Component {
                 this.setState({author: res.data.author, comment: res.data.comment})
             })
             .catch(e => {
-                console.log("Comment", e);
+                this.setState({errorMessage: e.message})
+                // console.log("Comment", e);
             })
     }
 
     commentLikeHandler(id) {
+        // const alert = useAlert();
         axios.post('/comments/' + id + '/like', { 
             "type": "like" 
         }, {headers: {
@@ -35,7 +38,7 @@ class Comment extends Component {
                 this.setState({ needsUpdate: true});
             })
             .catch(e => {
-                console.log(e)
+                this.setState({errorMessage: e.message})
             })
     }
 
@@ -54,7 +57,7 @@ class Comment extends Component {
                 this.setState({ needsUpdate: true});
             })
             .catch(e => {
-                console.log(e)
+                this.setState({errorMessage: e.message})
             })
     }
 

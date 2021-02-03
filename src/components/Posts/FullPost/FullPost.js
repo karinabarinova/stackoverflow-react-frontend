@@ -10,7 +10,7 @@ class FullPost extends Component {
     state = {
         loadedPost: null,
         CommentsUnderPost: [],
-        author: null,
+        author: {},
         needsUpdate: false
     }
 
@@ -32,6 +32,7 @@ class FullPost extends Component {
                         this.setState({needsUpdate: false});
                         axios.get('/users/' + this.state.loadedPost.author)
                             .then(res => {
+                                console.log(res)
                                 this.setState({ author: res.data})
                             })
                             .catch(e => {
@@ -45,7 +46,8 @@ class FullPost extends Component {
                     })
                 axios.get('/posts/' + +this.props.match.params.id + '/comments')
                     .then(res => {
-                        console.log(res);
+                        // console.log(res);
+                        console.log(res.data)
                         this.setState({ CommentsUnderPost: res.data})
                     })
                     .catch(e => {
@@ -170,7 +172,7 @@ class FullPost extends Component {
                 </div>
     
             );
-            if (this.state.CommentsUnderPost.length) {
+            if (this.state.CommentsUnderPost && this.state.CommentsUnderPost.length) {
                 comments = this.state.CommentsUnderPost.map(comment => {
                     return <Comment 
                             key={comment.id}
