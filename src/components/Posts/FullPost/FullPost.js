@@ -77,6 +77,7 @@ class FullPost extends Component {
                 })
         }
     }
+    
     subscribePostHandler = () => {
         axios.post('/posts/' + this.props.match.params.id + '/subscribe') //TODO: Pass auth token
             .then()

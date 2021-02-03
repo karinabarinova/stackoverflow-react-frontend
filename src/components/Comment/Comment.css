@@ -75,3 +75,18 @@
     margin-top: 10px;
     cursor: pointer;
 }
+
+.DeleteButton {
+    border-radius: 1ch;
+    text-align: center;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    font: inherit;
+    padding: 10px;
+    width: 100%;
+    margin: 10px;
+    font-weight: bold;
+    border: 1px solid #75b2ad;
+    background-color: #75b2ad;
+}

@@ -62,6 +62,26 @@ class Comment extends Component {
             })
     }
 
+    deleteCommentHandler = () => {
+        console.log("CLICKED")
+        const config = {
+            headers: {
+                'authorization': `Basic ${localStorage.getItem('token')}`
+            }
+        }
+        const res = window.confirm('Are you sure you want to delete your comment?')
+        
+        if (res) {
+            axios.delete('/comments/' + this.props.id, config)
+                .then(res => {
+                    this.forceUpdate() //TODO: does not work
+                })
+                .catch(e => {
+                    console.log(e);
+                })
+        }
+    }
+
     render() {
         if (this.state.comment) {
             console.log("COMMENT", this.state.comment)
@@ -79,7 +99,7 @@ class Comment extends Component {
                         <div className="Info">
                             <div className="Buttons">
                                 <Button btnType="Success">Edit</Button>
-                                <Button btnType="Danger">Delete</Button>
+                                <button className="DeleteButton" onClick={this.deleteCommentHandler}>Delete</button>
                             </div>
                             <div className="User">
                                 <div>answered {this.props.publish_date.replace('T', ' ').slice(0, 16)}</div>
