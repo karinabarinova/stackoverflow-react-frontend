@@ -111,12 +111,12 @@ class ConfirmResetPassword extends Component {
         let errorMessage = null;
         if (this.state.error)
             errorMessage = (
-                <p style={{textTransform: 'capitalize', backgroundColor: "red", borderRadius: "1ch"}}>Invalid Token or Password</p>
+                <p className={classes.ErrorMessage}>Invalid Token or Password</p>
             )
         let resultMessage = null;
         if (this.state.result)
                 resultMessage = (
-                    <p style={{textTransform: 'capitalize', backgroundColor: "green", borderRadius: "1ch"}}>Password reset successfully, you can now login</p>
+                    <p className={classes.SuccessMessage}>Password reset successfully, you can now login</p>
                 )
         
         return (

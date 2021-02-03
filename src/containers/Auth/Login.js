@@ -112,7 +112,7 @@ class Login extends Component {
         let errorMessage = null;
         if (this.props.error)
             errorMessage = (
-                <p style={{textTransform: 'capitalize'}}>{this.props.error}</p>
+                <p className={classes.ErrorMessage}>{this.props.error}</p>
             )
         
         let authRedirect = null;
