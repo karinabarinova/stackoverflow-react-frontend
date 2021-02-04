@@ -20,8 +20,10 @@ const navigationItems = (props) => (
             ? <><NavigationItem link="/login">Sign In</NavigationItem>
             <NavigationItem link="/register">Sign Up</NavigationItem></>
             : <NavigationItem link="/logout">Log out</NavigationItem>}
-        {props.isAuthenticated ? <div><NavLink className={classes.Dashboard} to="/dashboard"><img src={localStorage.getItem('avatar') !== 'undefined' ? `http://localhost:3001/${localStorage.getItem('avatar').replace('resources', '')}` : defaultUserAvatar} target="_blank" alt="user avatar"/>
-{localStorage.getItem('username')}</NavLink></div> : null}
+        {props.isAuthenticated ? <div className={classes.Dashboard}>
+            <img src={localStorage.getItem('avatar') !== 'undefined' ? `http://localhost:3001/${localStorage.getItem('avatar').replace('resources', '')}` : defaultUserAvatar} target="_blank" alt="user avatar"/>
+            <NavLink to="/dashboard">
+            {localStorage.getItem('username')}</NavLink></div> : null}
     </ul>
 )
 
