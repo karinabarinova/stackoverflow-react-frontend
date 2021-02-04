@@ -118,9 +118,9 @@ class Dashboard extends Component {
                         <p><b>Full name:</b> {this.state.user.fullName}</p>
                         <p><b>Your rating:</b> {this.state.user.rating}</p>
                     </div>
-                    <form onSubmit={(e) => this.submitHander(e)} enctype="multipart/form-data">
+                    <form onSubmit={(e) => this.submitHander(e)} encType="multipart/form-data">
                         <label className={classes.UploadAvatar}>Upload Avatar 
-                            <input type="file" single onChange={(e) => this.handlerInputChange(e)} name="avatar" accept="image/*" />
+                            <input type="file" single="true" onChange={(e) => this.handlerInputChange(e)} name="avatar" accept="image/*" />
                         </label>
                         <Button btnType="DashboardSuccess">Submit Avatar</Button>
                     </form>
