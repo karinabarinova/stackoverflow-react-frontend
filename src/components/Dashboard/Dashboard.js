@@ -152,9 +152,8 @@ class Dashboard extends Component {
             editProfileSettings = (
                 <div>
                     <form onSubmit={this.editProfileSubmitHandler}>
-                        <label>New Password</label>
-                        <input name="password" type="password" onChange={(e) => this.setState({...this.state, password : e.target.value })}></input>
-                        <input name="repeat_password" type="password" onChange={(e) => this.setState({...this.state, repeat_password : e.target.value })}></input>
+                        <input name="password" type="password" placeholder="New Password" onChange={(e) => this.setState({...this.state, password : e.target.value })}></input>
+                        <input name="repeat_password" type="password" placeholder="Confirm" onChange={(e) => this.setState({...this.state, repeat_password : e.target.value })}></input>
                         <button type="submit">Submit</button>
                     </form>
                     
