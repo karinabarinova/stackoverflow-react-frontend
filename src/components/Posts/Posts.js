@@ -1,4 +1,6 @@
 import { React, Component } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import Post from './Post/Post';
 import Button from '../Button/Button';
 import axios from 'axios';
@@ -25,6 +27,13 @@ class Posts extends Component {
         this.props.history.push('/posts/' + id);
     }
 
+    newPostHandler = () => {
+        if (this.props.isAuthenticated)
+            this.props.history.push('/new-post');
+        else
+            this.props.history.push('/login');
+    }
+
     render() {
         let posts = <p style={{textAlign: "center"}}>Something went wrong!</p>
         if (!this.state.error) {
@@ -46,7 +55,7 @@ class Posts extends Component {
             <section className="Posts">
                 <div className="header">
                     <div><h3>All Questions</h3></div>
-                    <div><Button btnType="Success">New Post</Button></div>
+                    <div><Button btnType="Success" clicked={this.newPostHandler}>New Post</Button></div>
                 </div>
                 {posts}
             </section>
@@ -54,4 +63,10 @@ class Posts extends Component {
     }
 }
 
-export default Posts;
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.auth.jwtToken !== null
+    };
+};
+
+export default connect(mapStateToProps, null)(Posts);
