@@ -23,14 +23,17 @@ class Comment extends Component {
     }
 
     loadData = () => {
-        axios.get('/comments/' + this.props.id)
-            .then(res => {
-                this.setState({author: res.data.author, comment: res.data.comment})
-            })
-            .catch(e => {
-                this.setState({errorMessage: e.message})
-                // console.log("Comment", e);
-            })
+        if (this.props.id) {
+            if (!this.state.comment || (this.state.comment && this.props.id !== +this.state.comment.id)) {
+                axios.get('/comments/' + this.props.id)
+                    .then(res => {
+                        this.setState({author: res.data.author, comment: res.data.comment, editStatus: res.data.comment.status})
+                    })
+                    .catch(e => {
+                        this.setState({errorMessage: e.message})
+                    })
+            }
+        }
     }
 
     commentLikeHandler(id) {
@@ -73,12 +76,12 @@ class Comment extends Component {
     }
 
     editCommentHandler = () => {
-        this.setState({isEdit: true, editContent: this.state.comment.status});
+        this.setState({isEdit: true, editStatus: this.state.comment.status});
     };
 
     submitEditHandler = (id) => {
         this.setState({isEdit: false});
-        const commentStatus = { status: this.state.editContent };
+        const commentStatus = { status: this.state.editStatus };
         const config = {
             headers: {
                 "authorization": `Basic ${localStorage.getItem('token')}`
@@ -94,7 +97,6 @@ class Comment extends Component {
     }
 
     deleteCommentHandler = () => {
-        console.log("CLICKED")
         const config = {
             headers: {
                 'authorization': `Basic ${localStorage.getItem('token')}`
@@ -122,8 +124,8 @@ class Comment extends Component {
                         <form onSubmit={() => this.submitEditHandler(this.props.id)}>
                             {/* <textarea rows="10" cols="60" value={this.state.editContent} onChange={(event) => this.setState({editContent: event.target.value})} /> */}
                             <select
-                            value={this.state.editStatus}
-                            onChange={(event) => this.setState({editContent: event.target.value})}>
+                            // value={this.state.editStatus}
+                            onChange={(event) => this.setState({editStatus: event.target.value})}>
                                 <option value="active">active</option>
                                 <option value="inactive">inactive</option>
                             </select>
