@@ -5,6 +5,10 @@
     justify-content: center;
 }
 
+.Dashboard .Info {
+    background-color: whitesmoke;
+}
+
 .Dashboard .Info img {
     width: 100px;
     height: 100px;

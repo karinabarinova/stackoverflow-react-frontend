@@ -9,6 +9,7 @@ import './Posts.css';
 class Posts extends Component {
     state = {
         posts: [],
+        categories: [],
         error: false
     };
 
@@ -17,6 +18,13 @@ class Posts extends Component {
             .then((res) => {
                 const posts = res.data.data.data;
                 this.setState({ posts: posts });
+            })
+            .catch(error => {
+                this.setState({ error: true })
+            })
+        axios.get('/categories')
+            .then((res) => {
+                this.setState({ categories: res.data });
             })
             .catch(error => {
                 this.setState({ error: true })
@@ -51,12 +59,22 @@ class Posts extends Component {
                     />
             })
         }
+        let selectCategory = (
+            <div>
+                <select
+                value={this.state.selectedOption}
+                onChange={this.changeCategoryHandler}>
+                    {this.state.categories.map(({title, id}, index) => <option value={id}>{title}</option>)}
+                </select>
+            </div>
+        )
         return(
             <section className="Posts">
                 <div className="header">
                     <div><h3>All Questions</h3></div>
                     <div><Button btnType="Success" clicked={this.newPostHandler}>New Post</Button></div>
                 </div>
+                {selectCategory}
                 {posts}
             </section>
         )
