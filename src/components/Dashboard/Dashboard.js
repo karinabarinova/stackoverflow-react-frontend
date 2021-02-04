@@ -117,6 +117,8 @@ class Dashboard extends Component {
                         <p><b>Your email:</b> {this.state.user.email}</p>
                         <p><b>Full name:</b> {this.state.user.fullName}</p>
                         <p><b>Your rating:</b> {this.state.user.rating}</p>
+                        <p><b>Your role:</b> {this.state.user.role}</p>
+
                     </div>
                     <form onSubmit={(e) => this.submitHander(e)} encType="multipart/form-data">
                         <label className={classes.UploadAvatar}>Upload Avatar 

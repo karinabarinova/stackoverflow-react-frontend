@@ -75,6 +75,7 @@ export const auth = (login, password, repeat_password, email, fullName, isSignup
                 localStorage.setItem('userId', res.data.id);
                 localStorage.setItem('username', res.data.login);
                 localStorage.setItem('avatar', res.data.avatar);
+                localStorage.setItem('role', res.data.role);
                 dispatch(authSuccess(res.data.jwtToken, res.data.id, res.data.login))
                 dispatch(checkAuthTimeout(res.data.expiresIn));
             })

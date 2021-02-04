@@ -21,9 +21,8 @@ const navigationItems = (props) => (
             <NavigationItem link="/register">Sign Up</NavigationItem></>
             : <NavigationItem link="/logout">Log out</NavigationItem>}
         {props.isAuthenticated ? <div className={classes.Dashboard}>
-            <img src={localStorage.getItem('avatar') !== 'undefined' ? `http://localhost:3001/${localStorage.getItem('avatar').replace('resources', '')}` : defaultUserAvatar} target="_blank" alt="user avatar"/>
-            <NavLink to="/dashboard">
-            {localStorage.getItem('username')}</NavLink></div> : null}
+            <NavLink to="/dashboard"><img src={localStorage.getItem('avatar') !== 'undefined' ? `http://localhost:3001/${localStorage.getItem('avatar').replace('resources', '')}` : defaultUserAvatar} target="_blank" alt="user avatar"/></NavLink>
+            {localStorage.getItem('username')} | {localStorage.getItem('role')}</div> : null}
     </ul>
 )
 
