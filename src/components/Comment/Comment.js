@@ -8,7 +8,9 @@ class Comment extends Component {
     state = {
         author: {},
         comment: {},
-        errorMessage: ''
+        errorMessage: '',
+        isEdit: false,
+        editContent: null
         // needsUpdate: 
     };
 
@@ -62,6 +64,18 @@ class Comment extends Component {
             })
     }
 
+    editCommentHandler = () => {
+        this.setState({isEdit: true, editContent: this.state.comment.content});
+    };
+
+    submitEditHandler = () => {
+        this.setState({isEdit: false});
+    };
+
+    cancelEditHandler = () => {
+        this.setState({isEdit: false});
+    }
+
     deleteCommentHandler = () => {
         console.log("CLICKED")
         const config = {
@@ -84,7 +98,17 @@ class Comment extends Component {
 
     render() {
         if (this.state.comment) {
-            console.log("COMMENT", this.state.comment)
+            if (this.state.isEdit) {
+                return (
+                    <div className="CommentEdit">
+                        <form onSubmit={this.submitEditHandler}>
+                            <textarea rows="10" cols="60" value={this.state.editContent} onChange={(event) => this.setState({editContent: event.target.value})} />
+                            <button type="submit" className="SubmitButton"> Submit </button>
+                            <button className="" onClick={this.cancelEditHandler} className="DeleteButton">Cancel</button>
+                        </form>
+                    </div>
+                )
+            }
             return (
                 <div className="Comment">
                     <div className="ratingInfo">
@@ -98,7 +122,7 @@ class Comment extends Component {
                     <div className="aboutAuthor">
                         <div className="Info">
                             <div className="Buttons">
-                                <Button btnType="Success">Edit</Button>
+                                <button className="EditButton" onClick={this.editCommentHandler}>Edit</button>
                                 <button className="DeleteButton" onClick={this.deleteCommentHandler}>Delete</button>
                             </div>
                             <div className="User">
