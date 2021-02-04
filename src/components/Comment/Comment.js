@@ -10,11 +10,19 @@ class Comment extends Component {
         comment: {},
         errorMessage: '',
         isEdit: false,
-        editContent: null
+        editStatus: null
         // needsUpdate: 
     };
 
+    componentDidUpdate() {
+        this.loadData();
+    }
+
     componentDidMount() {
+        this.loadData();
+    }
+
+    loadData = () => {
         axios.get('/comments/' + this.props.id)
             .then(res => {
                 this.setState({author: res.data.author, comment: res.data.comment})
@@ -65,11 +73,20 @@ class Comment extends Component {
     }
 
     editCommentHandler = () => {
-        this.setState({isEdit: true, editContent: this.state.comment.content});
+        this.setState({isEdit: true, editContent: this.state.comment.status});
     };
 
-    submitEditHandler = () => {
+    submitEditHandler = (id) => {
         this.setState({isEdit: false});
+        const commentStatus = { status: this.state.editContent };
+        const config = {
+            headers: {
+                "authorization": `Basic ${localStorage.getItem('token')}`
+            }
+        }
+        axios.patch('/comments/' + id, commentStatus, config)
+            .then(res => console.log(res))
+            .catch(e => console.log(e))
     };
 
     cancelEditHandler = () => {
@@ -97,12 +114,19 @@ class Comment extends Component {
     }
 
     render() {
+        let editBlock = null;
         if (this.state.comment) {
             if (this.state.isEdit) {
-                return (
+                editBlock = (
                     <div className="CommentEdit">
-                        <form onSubmit={this.submitEditHandler}>
-                            <textarea rows="10" cols="60" value={this.state.editContent} onChange={(event) => this.setState({editContent: event.target.value})} />
+                        <form onSubmit={() => this.submitEditHandler(this.props.id)}>
+                            {/* <textarea rows="10" cols="60" value={this.state.editContent} onChange={(event) => this.setState({editContent: event.target.value})} /> */}
+                            <select
+                            value={this.state.editStatus}
+                            onChange={(event) => this.setState({editContent: event.target.value})}>
+                                <option value="active">active</option>
+                                <option value="inactive">inactive</option>
+                            </select>
                             <button type="submit" className="SubmitButton"> Submit </button>
                             <button className="" onClick={this.cancelEditHandler} className="DeleteButton">Cancel</button>
                         </form>
@@ -131,7 +155,8 @@ class Comment extends Component {
                                 <div className="Author">{this.state.author.login}</div>
                             </div>
                         </div> 
-                    </div>   
+                    </div>
+                    {editBlock}   
                     {/* <p>{this.props.author}</p> */}
                 </div>
             );
