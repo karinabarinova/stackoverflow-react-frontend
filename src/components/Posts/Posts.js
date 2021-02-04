@@ -10,7 +10,7 @@ class Posts extends Component {
     state = {
         posts: [],
         categories: [],
-        selectedOption: '1', //TODO: Fix incorrect value for every option inside select tag
+        selectedOption: '0', //TODO: Fix incorrect value for every option inside select tag
         error: false
     };
 
@@ -34,14 +34,17 @@ class Posts extends Component {
 
     changeCategoryHandler = () => {
         const categoryId = this.state.selectedOption;
-        axios.get('/categories/' + categoryId + '/posts')
-            .then(res => this.setState({posts: res.data}))
-            .catch(e => console.log(e))
+        if (categoryId !== '0') {
+            console.log(categoryId);
+            axios.get('/categories/' + +categoryId + '/posts')
+                .then(res => this.setState({posts: res.data}))
+                .catch(e => console.log(e))
+        }
     }
 
     changeCategoryUpdateHandler = (e) => {
-        this.setState({selectedOption: e.target.value})
-        this.changeCategoryHandler();
+        this.setState({selectedOption: e.target.value}, this.changeCategoryHandler)
+        // this.changeCategoryHandler();
         // console.log(this.state.selectedOption)
 
     }
@@ -83,6 +86,7 @@ class Posts extends Component {
                 </select>
             </div>
         )
+
         return(
             <section className="Posts">
                 <div className="header">
