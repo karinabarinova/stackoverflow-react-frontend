@@ -1,5 +1,6 @@
 import { React, Component } from 'react';
 import Post from './Post/Post';
+import Button from '../Button/Button';
 import axios from 'axios';
 import './Posts.css';
 
@@ -43,7 +44,10 @@ class Posts extends Component {
         }
         return(
             <section className="Posts">
-                <h3>All Questions</h3>
+                <div className="header">
+                    <div><h3>All Questions</h3></div>
+                    <div><Button btnType="Success">New Post</Button></div>
+                </div>
                 {posts}
             </section>
         )

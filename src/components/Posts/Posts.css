@@ -1,9 +1,22 @@
 .Posts {
     margin-top: 256px;
     display: flex;
+    flex-wrap: wrap;
     flex-flow: column;
     justify-content: center;
     align-items: center;
     width: 80%;
     margin: auto;
+}
+
+.Posts .header {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.Posts .header > div {
+    margin: 0 10%;
 }
