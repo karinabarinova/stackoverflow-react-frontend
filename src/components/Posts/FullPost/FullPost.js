@@ -75,9 +75,29 @@ class FullPost extends Component {
     }
 
     subscribePostHandler = () => {
-        axios.post('/posts/' + this.props.match.params.id + '/subscribe') //TODO: Pass auth token
-            .then()
-            .catch()
+        const config = {
+            headers: {
+                'authorization': `Basic ${localStorage.getItem('token')}`
+            }
+        };
+        axios.post('/posts/' + this.props.match.params.id + '/subscribe', {}, config)
+            .then(res => console.log(res.data))
+            .catch(e => {
+                console.log(e.response)
+                this.setState({errorMessage: e.response.data.message})})
+    }    
+
+    unsubscribePostHandler = () => {
+        const config = {
+            headers: {
+                'authorization': `Basic ${localStorage.getItem('token')}`
+            }
+        };
+        axios.post('/posts/' + this.props.match.params.id + '/unsubscribe', {}, config)
+            .then(res => console.log(res.data))
+            .catch(e => {
+                console.log(e.response)
+                this.setState({errorMessage: e.response.data.message})})
     }    
 
     postLikeHandler(id) {
@@ -183,6 +203,7 @@ class FullPost extends Component {
                     </div>      
                     <div className="Edit">
                         <button onClick={this.subscribePostHandler}>Subscribe</button>
+                        <button onClick={this.unsubscribePostHandler}>Unsubscribe</button>
                         {this.state.author.login === this.props.loggedInUser ? <Link to={{pathname: '/editpost/' + this.props.match.params.id, state: {editPost, from: this.props.location.pathname} }}><button onClick={this.editPostHandler} className="Edit">Edit</button></Link> : null}
                         {this.state.author.login === this.props.loggedInUser ? <button onClick={this.deletePostHandler} className="Delete">Delete</button> : null}
                     </div>
