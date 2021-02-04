@@ -66,8 +66,8 @@ class Dashboard extends Component {
         this.setState({initEdit: true})
     }
 
-    editProfileSubmitHandler = (e) => {
-        e.preventDefault()
+    editProfileSubmitHandler = (event) => {
+        event.preventDefault()
         const editInfo = { 
             "password": this.state.password,
             "repeat_password": this.state.repeat_password
@@ -151,7 +151,7 @@ class Dashboard extends Component {
         if (this.state.initEdit)
             editProfileSettings = (
                 <div>
-                    <form onSubmit={(e) => this.editProfileSubmitHandler(e)}>
+                    <form onSubmit={this.editProfileSubmitHandler}>
                         <label>New Password</label>
                         <input name="password" type="password" onChange={(e) => this.setState({...this.state, password : e.target.value })}></input>
                         <input name="repeat_password" type="password" onChange={(e) => this.setState({...this.state, repeat_password : e.target.value })}></input>

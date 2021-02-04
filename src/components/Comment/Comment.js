@@ -79,7 +79,8 @@ class Comment extends Component {
         this.setState({isEdit: true, editStatus: this.state.comment.status});
     };
 
-    submitEditHandler = (id) => {
+    submitEditHandler = (e, id) => {
+        e.preventDefault();
         this.setState({isEdit: false});
         const commentStatus = { status: this.state.editStatus };
         const config = {
