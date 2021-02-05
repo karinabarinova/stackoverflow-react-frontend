@@ -80,7 +80,7 @@ class Posts extends Component {
                 value={this.state.selectedOption}
                 onChange={this.changeCategoryUpdateHandler}>
                     <option value="0">None</option>
-                    {this.state.categories.map(({title, id}, index) => <option value={id}>{title}</option>)}
+                    {this.state.categories.map(({title, id}, index) => <option key={id} value={id}>{title}</option>)}
                 </select>
             </div>
         )
