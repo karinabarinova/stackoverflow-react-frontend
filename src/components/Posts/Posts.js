@@ -10,22 +10,27 @@ class Posts extends Component {
     state = {
         posts: [],
         categories: [],
-        selectedOption: '0', //TODO: Fix incorrect value for every option inside select tag
-        error: false
+        selectedOption: '0', 
+        error: false,
+        needsUpdate: false
     };
 
     componentDidMount() {
+        this.loadData();
+    }
+    
+    loadData = () => {
         axios.get('/posts?page=1&limit=10&order_by=createdAt&order_direction=desc')
             .then((res) => {
                 const posts = res.data.data.data;
-                this.setState({ posts: posts });
+                this.setState({ posts: posts, needsUpdate: false });
             })
             .catch(error => {
                 this.setState({ error: true })
             })
         axios.get('/categories')
             .then((res) => {
-                this.setState({ categories: res.data });
+                this.setState({ categories: res.data, needsUpdate: false });
             })
             .catch(error => {
                 this.setState({ error: true })
@@ -37,7 +42,9 @@ class Posts extends Component {
         if (categoryId !== '0') {
             console.log(categoryId);
             axios.get('/categories/' + +categoryId + '/posts')
-                .then(res => this.setState({posts: res.data}))
+                .then(res => {
+                    this.setState({posts: res.data, needsUpdate: true})
+            })
                 .catch(e => console.log(e))
         }
     }
