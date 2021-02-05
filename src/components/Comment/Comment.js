@@ -13,7 +13,8 @@ class Comment extends Component {
         errorMessage: '',
         isEdit: false,
         editStatus: null,
-        needsUpdate: false 
+        needsUpdate: false,
+        subcommentContent: ''
     };
 
     componentDidUpdate() {
@@ -111,6 +112,18 @@ class Comment extends Component {
             })
     }
 
+    SubcommentSubmitEditHandler = (e) => {
+        e.preventDefault();
+        if (this.state.subcommentContent )
+            axios.post('/comments/' + this.props.id + '/comments', { 
+                "content": this.state.subcommentContent  
+            }, {headers: {
+                'authorization': `Basic ${localStorage.getItem('token')}`
+            }})
+                .then(res => this.setState({ needsUpdate: true, subcommentContent: '' }))
+                .catch(e => console.log(e))
+    }
+
     render() {
         let editBlock = null;
         let subcomments = null;
@@ -168,8 +181,8 @@ class Comment extends Component {
                         {editBlock}
                     </div>
                     <div className="newSubcomment">
-                        <form>
-                            <input type="text" placeholder="Add new comment..."></input>
+                        <form onSubmit={(e) => this.SubcommentSubmitEditHandler(e)}>
+                            <input type="text" placeholder="Add new comment..." value={this.state.subcommentContent} onChange={(e) => this.setState({subcommentContent: e.target.value})}></input>
                             <button type="submit" className="SubcommentSubmitButton"> Submit </button>
                         </form>
                     </div>
