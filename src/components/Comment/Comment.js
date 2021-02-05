@@ -167,6 +167,12 @@ class Comment extends Component {
                         </div>
                         {editBlock}
                     </div>
+                    <div className="newSubcomment">
+                        <form>
+                            <input type="text" placeholder="Add new comment..."></input>
+                            <button type="submit" className="SubcommentSubmitButton"> Submit </button>
+                        </form>
+                    </div>
                     {subcomments}
                 </div>
                 
