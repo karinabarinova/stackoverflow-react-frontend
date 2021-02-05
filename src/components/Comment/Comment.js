@@ -140,7 +140,7 @@ class Comment extends Component {
                 <div className="Comment">
                     <div className="ratingInfo">
                         <div onClick={() => this.commentLikeHandler(this.props.id)} className="arrowUp"></div>
-                        <span>0</span>
+                        <span>{this.props.rating}</span>
                         <div onClick={() => this.commentDislikeHandler(this.props.id)} className="arrowDown"></div>
                     </div>
                     <div className="content">

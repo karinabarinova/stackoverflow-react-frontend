@@ -217,6 +217,7 @@ class FullPost extends Component {
                     return <Comment 
                             key={comment.id}
                             id={comment.id}
+                            rating={comment.rating}
                             content={comment.content}
                             author={comment.author} //TODO: incorrect author
                             publish_date={comment.publish_date}
