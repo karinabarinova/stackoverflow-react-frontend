@@ -84,11 +84,18 @@ class Comment extends Component {
             'authorization': `Basic ${localStorage.getItem('token')}`
         }})
             .then (res => {
-                this.setState(prevState => {
-                    let comment = Object.assign({}, prevState.comment);
-                    comment.rating = comment.rating++;
-                    return comment;
-                });
+                if (type === 'like')
+                    this.setState(prevState => {
+                        let comment = Object.assign({}, prevState.comment);
+                        comment.rating = comment.rating++;
+                        return comment;
+                    });
+                else
+                    this.setState(prevState => {
+                        let comment = Object.assign({}, prevState.comment);
+                        comment.rating = comment.rating--;
+                        return comment;
+                    });
                 this.setState({ needsUpdate: true});
             })
             .catch(e => {
@@ -118,7 +125,7 @@ class Comment extends Component {
                 <div className="Comment">
                     <div className="ratingInfo">
                         <div onClick={() => this.commentLikeHandler(this.props.id, "like")} className="arrowUp"></div>
-                        <span>{this.props.rating}</span>
+                        <span>{this.state.comment.rating}</span>
                         <div onClick={() => this.commentLikeHandler(this.props.id, "dislike")} className="arrowDown"></div>
                     </div>
                     <div className="content">
