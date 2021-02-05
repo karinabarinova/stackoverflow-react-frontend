@@ -100,18 +100,25 @@ class FullPost extends Component {
                 this.setState({errorMessage: e.response.data.message})})
     }    
 
-    postLikeHandler(id) {
+    postLikeHandler(id, type) {
         axios.post('/posts/' + id + '/like', { 
-            "type": "like" 
+            "type": type 
         }, {headers: {
             'authorization': `Basic ${localStorage.getItem('token')}`
         }})
             .then (res => {
-                this.setState(prevState => {
-                    let post = Object.assign({}, prevState.loadedPost);
-                    post.rating = post.rating++;
-                    return post;
-                });
+                if (type === "like")
+                    this.setState(prevState => {
+                        let post = Object.assign({}, prevState.loadedPost);
+                        post.rating = post.rating++;
+                        return post;
+                    });
+                else
+                    this.setState(prevState => {
+                        let post = Object.assign({}, prevState.loadedPost);
+                        post.rating = post.rating--;
+                        return post;
+                    });
                 this.setState({ needsUpdate: true});
             })
             .catch(e => {
@@ -139,25 +146,6 @@ class FullPost extends Component {
         }
     }
 
-    postDislikeHandler(id) {
-        axios.post('/posts/' + id + '/like', { 
-            "type": "dislike" 
-        }, {headers: {
-            'authorization': `Basic ${localStorage.getItem('token')}`
-        }})
-            .then (res => {
-                this.setState(prevState => {
-                    let post = Object.assign({}, prevState.loadedPost);
-                    post.rating = post.rating++;
-                    return post;
-                });
-                this.setState({ needsUpdate: true});
-            })
-            .catch(e => {
-                this.setState({errorMessage: e.response.data.message})
-            })
-    }
-
     render () {
         let post = <p style={{textAlign: 'center'}}>Post Not Found!</p>;
         let comments = null;
@@ -174,9 +162,9 @@ class FullPost extends Component {
                     <div className="column">
                         <div className="Postblock2">
                             <div>
-                                <div onClick={() => this.postLikeHandler(this.state.loadedPost.id)} className="arrowUp"></div>
+                                <div onClick={() => this.postLikeHandler(this.state.loadedPost.id, "like")} className="arrowUp"></div>
                                 <span>{this.state.loadedPost.rating}</span>
-                                <div onClick={() => this.postDislikeHandler(this.state.loadedPost.id)} className="arrowDown"></div>
+                                <div onClick={() => this.postLikeHandler(this.state.loadedPost.id, "dislike")} className="arrowDown"></div>
                             </div>
                         </div>
                         <div className="Postblock1">
