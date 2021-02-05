@@ -16,7 +16,7 @@ const Search = (props) => {
     return(
     <div className={classes.searchContainer}>
             <form>
-                <input type="text" value={search} placeholder="Search.." name="search" onChange={(e) => setSearch(e.target.value)} />
+                <input type="text" value={search} placeholder="Search for posts..." name="search" onChange={(e) => setSearch(e.target.value)} />
                 <button type="submit" onClick={passSearchData}><i className="fa fa-search"></i></button>
             </form>
     </div>

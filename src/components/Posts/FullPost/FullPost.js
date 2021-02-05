@@ -219,9 +219,8 @@ class FullPost extends Component {
                             id={comment.id}
                             rating={comment.rating}
                             content={comment.content}
-                            author={comment.author} //TODO: incorrect author
+                            author={comment.author}
                             publish_date={comment.publish_date}
-                            // clicked={() => this.postSelectedHandler(post.id)}
                         />
                 })
             }

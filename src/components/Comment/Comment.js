@@ -10,8 +10,8 @@ class Comment extends Component {
         comment: {},
         errorMessage: '',
         isEdit: false,
-        editStatus: null
-        // needsUpdate: 
+        editStatus: null,
+        needsUpdate: false 
     };
 
     componentDidUpdate() {
@@ -24,55 +24,16 @@ class Comment extends Component {
 
     loadData = () => {
         if (this.props.id) {
-            if (!this.state.comment || (this.state.comment && this.props.id !== +this.state.comment.id)) {
+            if (!this.state.comment || (this.state.comment && this.props.id !== +this.state.comment.id) || this.state.needsUpdate) {
                 axios.get('/comments/' + this.props.id)
                     .then(res => {
-                        this.setState({author: res.data.author, comment: res.data.comment, editStatus: res.data.comment.status})
+                        this.setState({author: res.data.author, comment: res.data.comment, editStatus: res.data.comment.status, needsUpdate: false})
                     })
                     .catch(e => {
                         this.setState({errorMessage: e.message})
                     })
             }
         }
-    }
-
-    commentLikeHandler(id) {
-        // const alert = useAlert();
-        axios.post('/comments/' + id + '/like', { 
-            "type": "like" 
-        }, {headers: {
-            'authorization': `Basic ${localStorage.getItem('token')}`
-        }})
-            .then (res => {
-                this.setState(prevState => {
-                    let comment = Object.assign({}, prevState.comment);
-                    comment.rating = comment.rating++;
-                    return comment;
-                });
-                this.setState({ needsUpdate: true});
-            })
-            .catch(e => {
-                this.setState({errorMessage: e.message})
-            })
-    }
-
-    commentDislikeHandler(id) {
-        axios.post('/comments/' + id + '/like', { 
-            "type": "dislike" 
-        }, {headers: {
-            'authorization': `Basic ${localStorage.getItem('token')}`
-        }})
-            .then (res => {
-                this.setState(prevState => {
-                    let comment = Object.assign({}, prevState.comment);
-                    comment.rating = comment.rating++;
-                    return comment;
-                });
-                this.setState({ needsUpdate: true});
-            })
-            .catch(e => {
-                this.setState({errorMessage: e.message})
-            })
     }
 
     editCommentHandler = () => {
@@ -116,6 +77,25 @@ class Comment extends Component {
         }
     }
 
+    commentLikeHandler(id, type) {
+        axios.post('/comments/' + id + '/like', { 
+            "type": type 
+        }, {headers: {
+            'authorization': `Basic ${localStorage.getItem('token')}`
+        }})
+            .then (res => {
+                this.setState(prevState => {
+                    let comment = Object.assign({}, prevState.comment);
+                    comment.rating = comment.rating++;
+                    return comment;
+                });
+                this.setState({ needsUpdate: true});
+            })
+            .catch(e => {
+                this.setState({errorMessage: e.response.data.message})
+            })
+    }
+
     render() {
         let editBlock = null;
         if (this.state.comment) {
@@ -123,9 +103,7 @@ class Comment extends Component {
                 editBlock = (
                     <div className="CommentEdit">
                         <form onSubmit={() => this.submitEditHandler(this.props.id)}>
-                            {/* <textarea rows="10" cols="60" value={this.state.editContent} onChange={(event) => this.setState({editContent: event.target.value})} /> */}
                             <select
-                            // value={this.state.editStatus}
                             onChange={(event) => this.setState({editStatus: event.target.value})}>
                                 <option value="active">active</option>
                                 <option value="inactive">inactive</option>
@@ -139,9 +117,9 @@ class Comment extends Component {
             return (
                 <div className="Comment">
                     <div className="ratingInfo">
-                        <div onClick={() => this.commentLikeHandler(this.props.id)} className="arrowUp"></div>
+                        <div onClick={() => this.commentLikeHandler(this.props.id, "like")} className="arrowUp"></div>
                         <span>{this.props.rating}</span>
-                        <div onClick={() => this.commentDislikeHandler(this.props.id)} className="arrowDown"></div>
+                        <div onClick={() => this.commentLikeHandler(this.props.id, "dislike")} className="arrowDown"></div>
                     </div>
                     <div className="content">
                         <p>{this.props.content}</p>
