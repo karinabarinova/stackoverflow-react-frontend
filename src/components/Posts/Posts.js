@@ -44,9 +44,6 @@ class Posts extends Component {
 
     changeCategoryUpdateHandler = (e) => {
         this.setState({selectedOption: e.target.value}, this.changeCategoryHandler)
-        // this.changeCategoryHandler();
-        // console.log(this.state.selectedOption)
-
     }
 
     postSelectedHandler = (id) => {
@@ -82,6 +79,7 @@ class Posts extends Component {
                 <select
                 value={this.state.selectedOption}
                 onChange={this.changeCategoryUpdateHandler}>
+                    <option value="0">None</option>
                     {this.state.categories.map(({title, id}, index) => <option value={id}>{title}</option>)}
                 </select>
             </div>
