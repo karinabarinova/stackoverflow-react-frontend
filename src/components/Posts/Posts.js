@@ -1,5 +1,6 @@
 import { React, Component } from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../../store/index';
 import { Redirect } from 'react-router-dom';
 import Post from './Post/Post';
 import Button from '../Button/Button';
@@ -12,20 +13,30 @@ class Posts extends Component {
         categories: [],
         selectedOption: '0', 
         error: false,
-        needsUpdate: false
+        needsUpdate: false,
+        search: null
     };
 
-    // componentDidUpdate(){
-    //     // this.loadData();
-    // }
+    componentDidUpdate(){
+        if (this.props.search.length) {
+            if (this.props.search && this.props.search !== '' && this.props.search !== this.state.search) {
+                this.setState({search: this.props.search});
+                this.loadData(this.props.search);
+                this.props.onSearch('');
+            }
+        }
+        
+    }
 
     componentDidMount() {
-        if (!this.props.posts)
-            this.loadData();
+        this.loadData(null);
     }
     
-    loadData = () => {
-        axios.get('/posts?page=1&limit=10&order_by=createdAt&order_direction=desc')
+    loadData = (search) => {
+        let url = 'posts?page=1&limit=10&order_by=createdAt&order_direction=desc'
+        if (search && search.length > 0)
+            url = `/posts?page=1&limit=10&order_by=createdAt&order_direction=desc&search=${search}`;
+        axios.get(url)
             .then((res) => {
                 const posts = res.data.data.data;
                 this.setState({ posts: posts, needsUpdate: false });
@@ -39,13 +50,12 @@ class Posts extends Component {
             })
             .catch(error => {
                 this.setState({ error: true })
-            })
+            })        
     }
 
     changeCategoryHandler = () => {
         const categoryId = this.state.selectedOption;
         if (categoryId !== '0') {
-            console.log(categoryId);
             axios.get('/categories/' + +categoryId + '/posts')
                 .then(res => {
                     this.setState({posts: res.data, needsUpdate: true})
@@ -70,7 +80,7 @@ class Posts extends Component {
     }
 
     render() {
-        console.log("SEARCG_DATA", this.props.search)
+        
         let posts = <p style={{textAlign: "center"}}>Something went wrong!</p>
         if (!this.state.error) {
             posts = this.state.posts.map(post => {
@@ -118,4 +128,10 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, null)(Posts);
+const mapDispatchToProps = dispatch => {
+    return {
+        onSearch: (text) => dispatch(actions.search(text))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Posts);

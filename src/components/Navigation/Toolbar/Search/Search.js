@@ -10,12 +10,13 @@ const Search = (props) => {
     const passSearchData = (e) => {
         e.preventDefault();
         props.onSearch(search);
+        setSearch('')
     }
 
     return(
     <div className={classes.searchContainer}>
             <form>
-                <input type="text" placeholder="Search.." name="search" onChange={(e) => setSearch(e.target.value)} />
+                <input type="text" value={search} placeholder="Search.." name="search" onChange={(e) => setSearch(e.target.value)} />
                 <button type="submit" onClick={passSearchData}><i className="fa fa-search"></i></button>
             </form>
     </div>
