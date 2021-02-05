@@ -7,11 +7,18 @@ const initialState = {
     error: null,
     loading: false,
     login: null,
-    role: null
+    role: null,
+    search: ''
 }
 
 const authStart = (state, action) => {
     return updateObject(state, {error: null, loading: true});
+}
+
+const search = (state, action) => {
+    return updateObject(state, {
+        search: action.search,
+    })
 }
 
 const authSuccess = (state, action) => {
@@ -47,6 +54,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.AUTH_SUCCESS: return authSuccess(state, action);
         case actionTypes.AUTH_FAIL: return authFail(state, action);
         case actionTypes.AUTH_LOGOUT: return authLogout(state, action);
+        case actionTypes.SEARCH_DATA: return search(state, action);
         default:
             return state;
     }

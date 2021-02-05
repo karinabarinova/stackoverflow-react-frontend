@@ -1,6 +1,23 @@
 import axios from 'axios';
 import * as actionTypes from './actionTypes';
 
+export const search = (text) => {
+    return dispatch => {
+        dispatch(searchFinish(text))
+    }
+    // return {
+    //     type: actionTypes.SEARCH_DATA,
+    //     search: text
+    // }
+}
+
+export const searchFinish = (text) => {
+    return {
+        type: actionTypes.SEARCH_DATA,
+        search: text
+    }
+}
+
 export const authStart = () => {
     return {
         type: actionTypes.AUTH_START

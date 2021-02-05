@@ -15,8 +15,13 @@ class Posts extends Component {
         needsUpdate: false
     };
 
+    // componentDidUpdate(){
+    //     // this.loadData();
+    // }
+
     componentDidMount() {
-        this.loadData();
+        if (!this.props.posts)
+            this.loadData();
     }
     
     loadData = () => {
@@ -65,6 +70,7 @@ class Posts extends Component {
     }
 
     render() {
+        console.log("SEARCG_DATA", this.props.search)
         let posts = <p style={{textAlign: "center"}}>Something went wrong!</p>
         if (!this.state.error) {
             posts = this.state.posts.map(post => {
@@ -107,7 +113,8 @@ class Posts extends Component {
 
 const mapStateToProps = state => {
     return {
-        isAuthenticated: state.auth.jwtToken !== null
+        isAuthenticated: state.auth.jwtToken !== null,
+        search: state.auth.search
     };
 };
 
