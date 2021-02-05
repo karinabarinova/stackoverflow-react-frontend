@@ -12,7 +12,7 @@ export const authSuccess = (jwtToken, userId, login) => {
         type: actionTypes.AUTH_SUCCESS,
         jwtToken: jwtToken,
         id: userId,
-        login: login //add login
+        login: login
     };
 };
 
