@@ -203,6 +203,7 @@ class FullPost extends Component {
             if (this.state.CommentsUnderPost && this.state.CommentsUnderPost.length) {
                 comments = this.state.CommentsUnderPost.map(comment => {
                     return <Comment 
+                            auth={this.props.isAuthenticated}
                             key={comment.id}
                             id={comment.id}
                             rating={comment.rating}

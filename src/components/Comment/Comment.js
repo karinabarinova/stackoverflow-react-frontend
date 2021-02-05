@@ -109,7 +109,7 @@ class Comment extends Component {
             if (this.state.isEdit) {
                 editBlock = (
                     <div className="CommentEdit">
-                        <form onSubmit={() => this.submitEditHandler(this.props.id)}>
+                        <form onSubmit={(e) => this.submitEditHandler(e, this.props.id)}>
                             <select
                             onChange={(event) => this.setState({editStatus: event.target.value})}>
                                 <option value="active">active</option>
@@ -133,10 +133,10 @@ class Comment extends Component {
                     </div>
                     <div className="aboutAuthor">
                         <div className="Info">
-                            <div className="Buttons">
+                            {this.props.auth ? (<div className="Buttons">
                                 <button className="EditButton" onClick={this.editCommentHandler}>Edit</button>
                                 <button className="DeleteButton" onClick={this.deleteCommentHandler}>Delete</button>
-                            </div>
+                            </div>) : null }
                             <div className="User">
                                 <div>answered {this.props.publish_date.replace('T', ' ').slice(0, 16)}</div>
                                 <div className="avatar"><img src={ this.state.author.avatar ?  "http://localhost:3001/" + this.state.author.avatar.replace('resources', '') : defaultUserAvatar} target="_blank" alt="author avatar" /></div>
