@@ -8,6 +8,7 @@ export const authStart = () => {
 };
 
 export const authSuccess = (jwtToken, userId, login) => {
+
     return {
         type: actionTypes.AUTH_SUCCESS,
         jwtToken: jwtToken,
@@ -24,12 +25,14 @@ export const authFail = (error) => {
 };
 
 export const logout = () => {
+
     localStorage.removeItem('token');
     localStorage.removeItem('expirationDate')
     localStorage.removeItem('userId')
     localStorage.removeItem('username');
     localStorage.removeItem('avatar');
-    
+    localStorage.removeItem('role');
+
     return {
         type: actionTypes.AUTH_LOGOUT
     }
@@ -45,6 +48,7 @@ export const checkAuthTimeout = (expirationTime) => {
 
 export const auth = (login, password, repeat_password, email, fullName, isSignup) => {
     return dispatch => {
+
         dispatch(authStart());
         let authData = {};
         if (isSignup) {
