@@ -3,11 +3,13 @@ import './Comment.css';
 import axios from 'axios';
 import Button from '../Button/Button';
 import defaultUserAvatar from '../../assets/images/default-avatar.png';
+import Subcomment from './Subcomment/Subcomment';
 
 class Comment extends Component {
     state = {
         author: {},
         comment: {},
+        subcomments: [],
         errorMessage: '',
         isEdit: false,
         editStatus: null,
@@ -32,6 +34,12 @@ class Comment extends Component {
                     .catch(e => {
                         this.setState({errorMessage: e.message})
                     })
+                axios.get('/comments/' + this.props.id + '/comments')
+                    .then(res => {
+                        console.log(res.data)
+                        this.setState({subcomments: res.data})
+                    })
+                    .catch(e => console.log("subcomments", e))
             }
         }
     }
@@ -105,6 +113,7 @@ class Comment extends Component {
 
     render() {
         let editBlock = null;
+        let subcomments = null;
         if (this.state.comment) {
             if (this.state.isEdit) {
                 editBlock = (
@@ -121,32 +130,46 @@ class Comment extends Component {
                     </div>
                 )
             }
+            if (this.state.subcomments)
+                subcomments = this.state.subcomments.map((comment) => {
+                    return <Subcomment 
+                        key={comment.id}
+                        content={comment.content}
+                        id={comment.id}
+                        author={comment.author}
+                        publish_date={comment.publish_date}
+                        // clicked={() => this.categorySelectedHandler(category.id)}
+                    />
+                })
             return (
-                <div className="Comment">
-                    <div className="ratingInfo">
-                        <div onClick={() => this.commentLikeHandler(this.props.id, "like")} className="arrowUp"></div>
-                        <span>{this.state.comment.rating}</span>
-                        <div onClick={() => this.commentLikeHandler(this.props.id, "dislike")} className="arrowDown"></div>
+                <div className="container">
+                    <div className="Comment">
+                        <div className="ratingInfo">
+                            <div onClick={() => this.commentLikeHandler(this.props.id, "like")} className="arrowUp"></div>
+                            <span>{this.state.comment.rating}</span>
+                            <div onClick={() => this.commentLikeHandler(this.props.id, "dislike")} className="arrowDown"></div>
+                        </div>
+                        <div className="content">
+                            <p>{this.props.content}</p>
+                        </div>
+                        <div className="aboutAuthor">
+                            <div className="Info">
+                                {this.props.auth ? (<div className="Buttons">
+                                    <button className="EditButton" onClick={this.editCommentHandler}>Edit</button>
+                                    <button className="DeleteButton" onClick={this.deleteCommentHandler}>Delete</button>
+                                </div>) : null }
+                                <div className="User">
+                                    <div>answered {this.props.publish_date.replace('T', ' ').slice(0, 16)}</div>
+                                    <div className="avatar"><img src={ this.state.author.avatar ?  "http://localhost:3001/" + this.state.author.avatar.replace('resources', '') : defaultUserAvatar} target="_blank" alt="author avatar" /></div>
+                                    <div className="Author">{this.state.author.login}</div>
+                                </div>
+                            </div> 
+                        </div>
+                        {editBlock}
                     </div>
-                    <div className="content">
-                        <p>{this.props.content}</p>
-                    </div>
-                    <div className="aboutAuthor">
-                        <div className="Info">
-                            {this.props.auth ? (<div className="Buttons">
-                                <button className="EditButton" onClick={this.editCommentHandler}>Edit</button>
-                                <button className="DeleteButton" onClick={this.deleteCommentHandler}>Delete</button>
-                            </div>) : null }
-                            <div className="User">
-                                <div>answered {this.props.publish_date.replace('T', ' ').slice(0, 16)}</div>
-                                <div className="avatar"><img src={ this.state.author.avatar ?  "http://localhost:3001/" + this.state.author.avatar.replace('resources', '') : defaultUserAvatar} target="_blank" alt="author avatar" /></div>
-                                <div className="Author">{this.state.author.login}</div>
-                            </div>
-                        </div> 
-                    </div>
-                    {editBlock}   
-                    {/* <p>{this.props.author}</p> */}
+                    {subcomments}
                 </div>
+                
             );
         }
     }
