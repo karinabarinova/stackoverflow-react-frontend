@@ -80,7 +80,6 @@ class Dashboard extends Component {
         }
 
         if (editInfo.password !== editInfo.repeat_password) {
-            // this.setState({initEdit: false})
             this.setState({errorMessage: "Passwords do not match"})
         } else if (editInfo.password.length < 7) {
             this.setState({errorMessage: "Password too short"})
@@ -111,7 +110,8 @@ class Dashboard extends Component {
 
         axios.post('/users/avatar', formData, config)
             .then(res => {
-                console.log(res);
+                localStorage.setItem('avatar', res.data.avatar)
+                this.setState({user: res.data})
             })
             .catch(e => {
                 console.log(e)
@@ -168,7 +168,7 @@ class Dashboard extends Component {
                 {errorMessage}
                 <div className={classes.Info}>
                     <div>
-                        <img src={localStorage.getItem('avatar') !== 'undefined' ? "localhost:3001/api/" + localStorage.getItem('avatar').replace('resources', '') : defaultUserAvatar} alt="Profile {hoto" />
+                        <img src={localStorage.getItem('avatar') !== 'undefined' ? "http://localhost:3001/" + localStorage.getItem('avatar').replace('resources', '').slice(0) : defaultUserAvatar} alt="Profile {hoto" />
                     </div>
                     <div className={classes.generalInfo}>
                         <p><b>User:</b> {this.state.user.login}</p>

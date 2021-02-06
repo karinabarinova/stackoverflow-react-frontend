@@ -14,7 +14,11 @@ class Posts extends Component {
         selectedOption: '0', 
         error: false,
         needsUpdate: false,
-        search: null
+        search: null,
+        order_by: 'createdAt',
+        order_direction: 'desc',
+        page: '1',
+        limit: '10'
     };
 
     componentDidUpdate(){
