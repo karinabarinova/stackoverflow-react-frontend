@@ -1,6 +1,7 @@
 import { React, Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../store/index';
+import Pagination from "react-js-pagination";
 import { Redirect } from 'react-router-dom';
 import Post from './Post/Post';
 import Button from '../Button/Button';
@@ -16,7 +17,10 @@ class Posts extends Component {
         needsUpdate: false,
         search: null,
         order_by: 'createdAt',
-        order_direction: '',
+        order_direction: 'desc',
+        totalPages: 0,
+        totalItems: 0,
+        activePage: 0,
         page: '1',
         limit: '10'
     };
@@ -49,7 +53,7 @@ class Posts extends Component {
         axios.get(url)
             .then((res) => {
                 const posts = res.data.data.data;
-                this.setState({ posts: posts, needsUpdate: false, });
+                this.setState({ posts: posts, needsUpdate: false, totalPages: res.data.data.pages, totalItems: res.data.data.total, activePage: res.data.data.currentPage});
             })
             .catch(error => {
                 this.setState({ error: true })
@@ -146,6 +150,17 @@ class Posts extends Component {
                 
             </div>
         )
+        let pagination = (
+            <div className="Pagination">
+                <Pagination
+                activePage={this.state.activePage}
+                itemsCountPerPage={this.state.limit}
+                totalItemsCount={this.state.totalPages}
+                pageRangeDisplayed={5}
+                onChange={this.handlePageChange}
+                />
+            </div>
+        )
 
         return(
             <section className="Posts">
@@ -155,6 +170,7 @@ class Posts extends Component {
                 </div>
                 {selectCategory}
                 {posts}
+                {pagination}
             </section>
         )
     }
