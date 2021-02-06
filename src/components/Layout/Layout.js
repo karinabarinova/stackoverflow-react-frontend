@@ -16,7 +16,6 @@ class Layout extends Component {
                     loggedInUser={this.props.loggedInUser}
                 />
                 {this.props.children}
-                {/* <Footer /> */}
             </Aux>
         )
     }

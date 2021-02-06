@@ -38,7 +38,7 @@ class Categories extends Component {
             })
         }
         return(
-            <div>
+            <div className="container">
                 <div>
                     <h3>Categories</h3>
                     <p>A category is a keyword or label that categorizes your question with other, similar questions. Using the right tags makes it easier for others to find and answer your question.</p>

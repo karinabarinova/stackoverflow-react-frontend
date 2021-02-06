@@ -1,5 +1,9 @@
+.container {
+    margin: 50px auto;
+}
+
 .Categories {
-    margin-top: 256px;
+    /* margin-top: 256px; */
     display: flex;
     /* flex-flow: row; */
     flex-wrap: wrap;

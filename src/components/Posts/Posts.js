@@ -1,8 +1,8 @@
 import { React, Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../store/index';
-import Pagination from "react-js-pagination";
-import { Redirect } from 'react-router-dom';
+// import Pagination from "react-js-pagination";
+// import { Redirect } from 'react-router-dom';
 import Post from './Post/Post';
 import Button from '../Button/Button';
 import axios from 'axios';

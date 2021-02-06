@@ -17,6 +17,7 @@ import ResetPassword from '../Auth/ResetPassword';
 import ConfirmResetPassword from '../Auth/ConfirmResetPassword';
 import VerifyEmail from '../Auth/VerifyEmail';
 import EditPost from '../../components/Posts/EditPost/EditPost';
+import Footer from '../../components/Footer/Footer';
 import { connect } from 'react-redux';
 import * as actions from '../../store/index';
 
@@ -68,6 +69,7 @@ class MainPage extends Component {
             <div className="MainPage">
                 <Layout/>
                 {routes}
+                <Footer />
             </div>
         )
     }
