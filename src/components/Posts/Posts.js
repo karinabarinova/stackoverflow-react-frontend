@@ -32,6 +32,8 @@ class Posts extends Component {
                 }
             } else if (this.state.order_direction)
                 this.loadData(null)
+            else if (this.state.order_by)
+                this.loadData(null)
         }
         
     }
@@ -41,7 +43,7 @@ class Posts extends Component {
     }
     
     loadData = (search) => {
-        let url = `posts?page=1&limit=10&order_by=createdAt&order_direction=${this.state.order_direction}`
+        let url = `posts?page=1&limit=10&order_by=${this.state.order_by}&order_direction=${this.state.order_direction}`
         if (search && search.length > 0)
             url = `/posts?page=1&limit=10&order_by=createdAt&order_direction=desc&search=${search}`;
         axios.get(url)
@@ -81,6 +83,11 @@ class Posts extends Component {
             this.setState({order_direction: e.target.value, needsUpdate: true})
     }
 
+    changeSortHandler = (e) => {
+        if (e.target.value !== this.state.order_by)
+            this.setState({order_by: e.target.value, needsUpdate: true})
+    }
+
     postSelectedHandler = (id) => {
         this.props.history.push('/posts/' + id);
     }
@@ -112,7 +119,7 @@ class Posts extends Component {
         }
         let selectCategory = (
             <div>
-                <label>Sort by Categories: </label>
+                <label>Filter by Categories: </label>
                 <select
                 value={this.state.selectedOption}
                 onChange={this.changeCategoryUpdateHandler}>
@@ -126,6 +133,15 @@ class Posts extends Component {
                     <option value="-">-</option>
                     <option value="desc">Start from newest</option>
                     <option value="asc">Start from oldest</option>
+                </select>
+                <label>Sort by : </label>
+                <select
+                value='-'
+                onChange={this.changeSortHandler}>
+                    <option value="-">-</option>
+                    <option value="rating">Most votes</option>
+                    <option value="updatedAt">Recent Activity</option>
+                    <option value="createdAt">Newest</option>
                 </select>
                 
             </div>
