@@ -5,10 +5,6 @@ export const search = (text) => {
     return dispatch => {
         dispatch(searchFinish(text))
     }
-    // return {
-    //     type: actionTypes.SEARCH_DATA,
-    //     search: text
-    // }
 }
 
 export const searchFinish = (text) => {

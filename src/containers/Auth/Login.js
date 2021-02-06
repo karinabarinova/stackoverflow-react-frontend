@@ -16,7 +16,7 @@ class Login extends Component {
             login: {
                 elementType: 'input',
                 elementConfig: {
-                    type: 'text', //TO DO: change to text
+                    type: 'text',
                     placeholder: 'Username'
                 },
                 value: '',
@@ -54,8 +54,7 @@ class Login extends Component {
                 valid: false,
                 touched: "false"
             },
-        },
-    }
+        }    }
 
     inputChangedHandler = (event, controlName) => {
         const updatedControls = {
@@ -115,8 +114,11 @@ class Login extends Component {
             )
         
         let authRedirect = null;
-        if (this.props.isAuthenticated)
-                authRedirect = <Redirect to="/" />
+        if (this.props.isAuthenticated) {
+            console.log('true')
+            authRedirect = <Redirect to={this.props.authRedirectPath} />
+        }
+                
 
         return(
             <div className={classes.Login}>
@@ -127,10 +129,6 @@ class Login extends Component {
                     <div className={classes.forgot}>
                         <hr />
                         <Link to="/forgot-password">Forgot Password?</Link>
-                    {/* <Button 
-                        clicked={this.switchForgotPassword}
-                        btnType="ForgotPassword">Forgot Password?
-                    </Button> */}
                     </div>
                     <Button btnType="Success">Submit</Button>
                 </form>
@@ -138,7 +136,6 @@ class Login extends Component {
                     clicked={this.switchAuthModeHandler}
                     btnType="Danger">Switch to SIGNUP
                 </Button>
-                {/* <hr className={classes.hr} /> */}
             </div>
         )
     }
@@ -148,13 +145,13 @@ const mapStateToProps = state => {
     return {
         loading: state.auth.loading,
         error: state.auth.error,
-        isAuthenticated: state.auth.jwtToken !== null
+        isAuthenticated: state.auth.jwtToken !== null    
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAuth: (login, password, repeat_password, email, fullName, isSignup) => dispatch(actions.auth(login, password, repeat_password, email, fullName, isSignup))
+        onAuth: (login, password, repeat_password, email, fullName, isSignup) => dispatch(actions.auth(login, password, repeat_password, email, fullName, isSignup)),
     };
 };
 

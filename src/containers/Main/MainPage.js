@@ -51,6 +51,7 @@ class MainPage extends Component {
                     <Route path="/" exact component={Posts}/>
                     <Route path="/new-post" component={NewPost} />
                     <Route path='/logout' component={Logout} />
+                    <Route path="/login" component={Login} />
                     <Route path='/categories' exact component={Categories} />
                     <Route path='/users' exact component={Users} />
                     <Route path='/dashboard' exact component={Dashboard} />
