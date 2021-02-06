@@ -16,7 +16,7 @@ class Posts extends Component {
         needsUpdate: false,
         search: null,
         order_by: 'createdAt',
-        order_direction: 'desc',
+        order_direction: '',
         page: '1',
         limit: '10'
     };
@@ -28,8 +28,8 @@ class Posts extends Component {
                 this.loadData(this.props.search);
                 this.props.onSearch('');
             }
-        }
-        
+        } else if (this.state.order_direction)
+            this.loadData(null)
     }
 
     componentDidMount() {
@@ -37,13 +37,13 @@ class Posts extends Component {
     }
     
     loadData = (search) => {
-        let url = 'posts?page=1&limit=10&order_by=createdAt&order_direction=desc'
+        let url = `posts?page=1&limit=10&order_by=createdAt&order_direction=${this.state.order_direction}`
         if (search && search.length > 0)
             url = `/posts?page=1&limit=10&order_by=createdAt&order_direction=desc&search=${search}`;
         axios.get(url)
             .then((res) => {
                 const posts = res.data.data.data;
-                this.setState({ posts: posts, needsUpdate: false });
+                this.setState({ posts: posts, needsUpdate: false, order_direction: '' });
             })
             .catch(error => {
                 this.setState({ error: true })
@@ -70,6 +70,11 @@ class Posts extends Component {
 
     changeCategoryUpdateHandler = (e) => {
         this.setState({selectedOption: e.target.value}, this.changeCategoryHandler)
+    }
+
+    changeTimeHandler = (e) => {
+        if (e.target.value !== this.state.order_direction)
+            this.setState({order_direction: e.target.value})
     }
 
     postSelectedHandler = (id) => {
@@ -103,12 +108,22 @@ class Posts extends Component {
         }
         let selectCategory = (
             <div>
+                <label>Sort by Categories: </label>
                 <select
                 value={this.state.selectedOption}
                 onChange={this.changeCategoryUpdateHandler}>
                     <option value="0">None</option>
                     {this.state.categories.map(({title, id}, index) => <option key={id} value={id}>{title}</option>)}
                 </select>
+                <label>Sort by Time: </label>
+                <select
+                value='-'
+                onChange={this.changeTimeHandler}>
+                    <option value="-">-</option>
+                    <option value="desc">Start from newest</option>
+                    <option value="asc">Start from oldest</option>
+                </select>
+                
             </div>
         )
 
