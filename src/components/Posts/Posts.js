@@ -18,10 +18,8 @@ class Posts extends Component {
         search: null,
         order_by: 'createdAt',
         order_direction: 'desc',
-        totalPages: 0,
-        totalItems: 0,
-        activePage: 0,
-        page: '1',
+        currentPage: 0,
+        nextPage: 0,
         limit: '10'
     };
 
@@ -38,6 +36,8 @@ class Posts extends Component {
                 this.loadData(null)
             else if (this.state.order_by)
                 this.loadData(null)
+            else if (this.state.currentPage)
+                this.loadData(null)
         }
         
     }
@@ -47,13 +47,17 @@ class Posts extends Component {
     }
     
     loadData = (search) => {
-        let url = `posts?page=1&limit=10&order_by=${this.state.order_by}&order_direction=${this.state.order_direction}`
+        let page = 1;
+        if (page !== this.state.currentPage)
+            page = this.state.currentPage;
+        
+        let url = `posts?page=${page}&limit=5&order_by=${this.state.order_by}&order_direction=${this.state.order_direction}`
         if (search && search.length > 0)
             url = `/posts?page=1&limit=10&order_by=createdAt&order_direction=desc&search=${search}`;
         axios.get(url)
             .then((res) => {
                 const posts = res.data.data.data;
-                this.setState({ posts: posts, needsUpdate: false, totalPages: res.data.data.pages, totalItems: res.data.data.total, activePage: res.data.data.currentPage});
+                this.setState({ posts: posts, needsUpdate: false, nextPage: res.data.data.nextPage});
             })
             .catch(error => {
                 this.setState({ error: true })
@@ -103,6 +107,10 @@ class Posts extends Component {
             this.props.history.push('/login');
     }
 
+    loadMore = () => {
+        this.setState({currentPage: this.state.nextPage, needsUpdate: true});
+    }
+
     render() {
         
         let posts = <p style={{textAlign: "center"}}>Something went wrong!</p>
@@ -150,18 +158,15 @@ class Posts extends Component {
                 
             </div>
         )
-        let pagination = (
-            <div className="Pagination">
-                <Pagination
-                activePage={this.state.activePage}
-                itemsCountPerPage={this.state.limit}
-                totalItemsCount={this.state.totalPages}
-                pageRangeDisplayed={5}
-                onChange={this.handlePageChange}
-                />
-            </div>
-        )
-
+        let pagination = null;
+        
+        if (this.state.nextPage) {
+            pagination = (
+                <div className="Pagination">
+                    <Button btnType="Success" clicked={this.loadMore}>Load More</Button>
+                </div>
+            )
+        }
         return(
             <section className="Posts">
                 <div className="header">
