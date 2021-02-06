@@ -125,6 +125,7 @@ class Login extends Component {
                 <form onSubmit={this.submitHander}>
                     {form}
                     <div className={classes.forgot}>
+                        <hr />
                         <Link to="/forgot-password">Forgot Password?</Link>
                     {/* <Button 
                         clicked={this.switchForgotPassword}

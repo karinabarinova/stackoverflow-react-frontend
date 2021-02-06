@@ -112,7 +112,7 @@ class Posts extends Component {
             <section className="Posts">
                 <div className="header">
                     <div><h3>All Questions</h3></div>
-                    <div><Button btnType="Success" clicked={this.newPostHandler}>New Post</Button></div>
+                    <div><Button btnType="PostSuccess" clicked={this.newPostHandler}>New Post</Button></div>
                 </div>
                 {selectCategory}
                 {posts}
