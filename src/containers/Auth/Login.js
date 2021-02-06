@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
@@ -124,19 +124,20 @@ class Login extends Component {
                 {errorMessage}
                 <form onSubmit={this.submitHander}>
                     {form}
+                    <div className={classes.forgot}>
+                        <Link to="/forgot-password">Forgot Password?</Link>
+                    {/* <Button 
+                        clicked={this.switchForgotPassword}
+                        btnType="ForgotPassword">Forgot Password?
+                    </Button> */}
+                    </div>
                     <Button btnType="Success">Submit</Button>
                 </form>
                 <Button 
                     clicked={this.switchAuthModeHandler}
                     btnType="Danger">Switch to SIGNUP
                 </Button>
-                <hr className={classes.hr} />
-                <div className={classes.forgot}>
-                    <Button 
-                        clicked={this.switchForgotPassword}
-                        btnType="ForgotPassword">Forgot Password?
-                    </Button>
-                </div>
+                {/* <hr className={classes.hr} /> */}
             </div>
         )
     }

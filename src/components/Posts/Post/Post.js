@@ -66,7 +66,7 @@ class Post extends Component {
                 </div>
                 <div className={classes.column2}>
                     <div className={classes.title}>
-                        <h4>{this.props.title}</h4>
+                        <h3>{this.props.title}</h3>
                     </div>
                     <div className={classes.content}>
                         <ShowMoreText

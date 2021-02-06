@@ -1,16 +1,16 @@
 .Login {
-    margin: 20px auto;
+    margin: 100px auto;
     width: 80%;
     height: 100%;
     text-align: center;
-    box-shadow: 0 2px 3px #ccc;
+    /* box-shadow: 0 1px 1px #ccc; */
     border: 1px solid #eee;
-    padding: 10px;
+    padding: 30px;
     box-sizing: border-box;
-    background-color: #3aafa9;
-    border: 5px solid #2b7a78;
+    background-color: white;
+    /* border: 5px solid #2b7a78; */
     border-radius: 25px;
-    box-shadow: 0 12px 25px 5px rgba(0, 0, 0, .24), 0 20px 50px 0 rgba(0, 0, 0, .19);
+    box-shadow: 0 6px 15px 5px rgba(0, 0, 0, .10), 0 10px 25px 0 rgba(0, 0, 0, .10);
 }
 
 .hr {
@@ -21,13 +21,16 @@
 
 .Login input {
     border-radius: 1ch;
+    height: 60px;
+    border: 1px solid #ccc;
     text-align: center;
 }
 
 .forgot a{
     font-size: large;
+    /* width: 100%; */
     text-decoration: none;
-    color: white;
+    color: black;
 }
 
 .ErrorMessage {

@@ -1,6 +1,6 @@
 .User {
     display: flex;
-    background-color: whitesmoke;
+    background-color: white;
     flex-wrap: wrap;
     flex: 0 0 25%;
     margin: 5px;
@@ -27,6 +27,7 @@
     border: 1px solid lightgray;
     margin: 8px;
     padding: 8px;
+    /* background-color: white; */
 }
 
 .User .avatar img {

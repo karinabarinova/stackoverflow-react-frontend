@@ -1,5 +1,5 @@
 .Category {
-    background-color: whitesmoke;
+    background-color: white;
     display: flex;
     flex-wrap: wrap;
     flex: 1 0 25%;

@@ -17,8 +17,10 @@
 
 .Success {
     margin-top: 2em;
-    border: 1px solid #27363b;
-    background-color: #27363b;
+    border: 1px solid #92bed3;
+    background-color: #92bed3;
+    width: 50%;
+
 }
 
 .DashboardSuccess {
@@ -36,8 +38,9 @@
 }
 
 .Danger {
-    border: 1px solid #75b2ad;
-    background-color: #75b2ad;
+    border: 1px solid #7E7174;
+    background-color: #7E7174;
+    width: 50%;
 }
 
 .DashboardDanger {
@@ -49,4 +52,5 @@
 .ForgotPassword {
     background-color: #27363b;
     color: white;
+    width: 50%;
 }
