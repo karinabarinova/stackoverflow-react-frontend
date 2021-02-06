@@ -95,8 +95,8 @@
     width: 100%;
     margin: 10px;
     font-weight: bold;
-    border: 1px solid #75b2ad;
-    background-color: #75b2ad;
+    border: 1px solid #5eaaa8;
+    background-color: #5eaaa8;
 }
 
 .SubcommentSubmitButton {
@@ -110,8 +110,8 @@
     width: 23%;
     margin: 10px;
     font-weight: bold;
-    border: 1px solid #75b2ad;
-    background-color: #75b2ad;
+    border: 1px solid #92bed3;
+    background-color: #92bed3;
 }
 
 .DeleteButton {
@@ -125,8 +125,8 @@
     width: 50%;
     margin: 10px;
     font-weight: bold;
-    border: 1px solid #75b2ad;
-    background-color: #75b2ad;
+    border: 1px solid #92bed3;
+    background-color: #92bed3;
 }
 
 .EditButton {

@@ -23,19 +23,19 @@
     background-color: transparent;
     cursor: pointer;
     outline: none;
-    color: #fa923f;
+    color: #92bed3;
 }
 
 .Edit button:hover,
 .Edit button:active {
-    color: #521751;
+    color: #464148;
 }
 
 .Edit button.Delete {
-    color: red;
+    color: #92bed3;
 }
 
 .Edit button.Delete:hover,
 .Edit button.Delete:active {
-    color: darkred;
+    color: rgb(126, 108, 108);
 }

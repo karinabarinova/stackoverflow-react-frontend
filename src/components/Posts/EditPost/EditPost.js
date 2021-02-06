@@ -85,7 +85,7 @@ class EditPost extends Component {
                     </select>
                         <button type="submit"> Submit </button>
                 </form>
-                <button onClick={() => this.props.history.push(`/posts/${this.state.id}`)}> Cancel </button>
+                <button className="Cancel" onClick={() => this.props.history.push(`/posts/${this.state.id}`)}> Cancel </button>
             </div>
     )}
 }

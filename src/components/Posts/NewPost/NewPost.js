@@ -21,6 +21,7 @@ class NewPost extends Component {
         }})
             .then((res) => {
                 console.log(res);
+                this.props.history.push('/');
             })
             .catch(e => {
                 console.log("New Post")
