@@ -22,14 +22,18 @@ class Posts extends Component {
     };
 
     componentDidUpdate(){
-        if (this.props.search.length) {
-            if (this.props.search && this.props.search !== '' && this.props.search !== this.state.search) {
-                this.setState({search: this.props.search});
-                this.loadData(this.props.search);
-                this.props.onSearch('');
-            }
-        } else if (this.state.order_direction)
-            this.loadData(null)
+
+        if (this.state.needsUpdate || this.props.search.length) {
+            if (this.props.search.length) {
+                if (this.props.search && this.props.search !== '' && this.props.search !== this.state.search) {
+                    this.setState({search: this.props.search});
+                    this.loadData(this.props.search);
+                    this.props.onSearch('');
+                }
+            } else if (this.state.order_direction)
+                this.loadData(null)
+        }
+        
     }
 
     componentDidMount() {
@@ -43,7 +47,7 @@ class Posts extends Component {
         axios.get(url)
             .then((res) => {
                 const posts = res.data.data.data;
-                this.setState({ posts: posts, needsUpdate: false, order_direction: '' });
+                this.setState({ posts: posts, needsUpdate: false, });
             })
             .catch(error => {
                 this.setState({ error: true })
@@ -74,7 +78,7 @@ class Posts extends Component {
 
     changeTimeHandler = (e) => {
         if (e.target.value !== this.state.order_direction)
-            this.setState({order_direction: e.target.value})
+            this.setState({order_direction: e.target.value, needsUpdate: true})
     }
 
     postSelectedHandler = (id) => {
