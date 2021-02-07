@@ -133,12 +133,12 @@ class Posts extends Component {
             })
         }
         let selectCategory = (
-            <div>
-                <label>Filter by Categories: </label>
+            <div className="custom-select">
+                {/* <label>Filter by Categories: </label> */}
                 <select
                 value={this.state.selectedOption}
                 onChange={this.changeCategoryUpdateHandler}>
-                    <option value="0">None</option>
+                    <option value="0">Filter by Categories:</option>
                     {this.state.categories.map(({title, id}, index) => <option key={id} value={id}>{title}</option>)}
                 </select>
                 <label>Sort by Time: </label>
