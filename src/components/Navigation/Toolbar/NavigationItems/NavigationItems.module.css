@@ -1,11 +1,11 @@
 .NavigationItems {
-    margin: 0;
+    margin: 10px 0;
     padding: 0;
     list-style: none;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    height: 100%;
+    display: block;
+    /* flex-flow: column;
+    align-items: center; */
+    width: 100%;
 }
 
 .NavigationItems .Dashboard img {
@@ -37,5 +37,41 @@
 @media (min-width: 500px) {
     .NavigationItems {
         flex-flow: row;
+    }
+
+    .NavigationItems {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        height: 100%;
+    }
+    
+    .NavigationItems .Dashboard img {
+        width: 25px;
+        height: 25px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .NavigationItems .Dashboard {
+        text-decoration: none;
+        font-size: large;
+        color: rgb(245, 245, 245);
+        padding: 2px 8px;
+        display: flex;
+        font-weight: 500;
+        height: 80%;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        border-left: 1px solid #92bed3;
+    }
+    
+    .NavigationItems .Dashboard a {
+        text-decoration: none;
+        color: rgb(245, 245, 245);
     }
 }
