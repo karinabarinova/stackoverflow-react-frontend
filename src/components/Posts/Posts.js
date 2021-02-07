@@ -141,19 +141,19 @@ class Posts extends Component {
                     <option value="0">Filter by Categories:</option>
                     {this.state.categories.map(({title, id}, index) => <option key={id} value={id}>{title}</option>)}
                 </select>
-                <label>Sort by Time: </label>
+                {/* <label>Sort by Time: </label> */}
                 <select
                 value='-'
                 onChange={this.changeTimeHandler}>
-                    <option value="-">-</option>
+                    <option value="-">Sort by Time:</option>
                     <option value="desc">Start from newest</option>
                     <option value="asc">Start from oldest</option>
                 </select>
-                <label>Sort by : </label>
+                {/* <label>Sort by : </label> */}
                 <select
                 value='-'
                 onChange={this.changeSortHandler}>
-                    <option value="-">-</option>
+                    <option value="-">Sort by :</option>
                     <option value="rating">Most votes</option>
                     <option value="updatedAt">Recent Activity</option>
                     <option value="createdAt">Newest</option>
