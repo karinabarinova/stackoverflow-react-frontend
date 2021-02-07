@@ -1,20 +1,46 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 .Posts {
     margin-top: 256px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-wrap: wrap;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column;
+            flex-flow: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     width: 80%;
     margin: auto;
 }
 
 .Posts .header {
     width: 60%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: baseline;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: baseline;
+        -ms-flex-align: baseline;
+            align-items: baseline;
 }
 
 .Posts .header > div {
@@ -22,9 +48,12 @@
 }
 
 .Pages {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     width: 30%;
-    justify-content: space-around;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
 }
 
 select::-ms-expand {
@@ -33,7 +62,8 @@ select::-ms-expand {
 select {
     margin: 1.5rem;
     display: inline-block;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     padding: 0.5em 2em 0.5em 0.5em;
     border: 1px solid #eee;
     font: inherit;
@@ -43,6 +73,7 @@ select {
     -ms-appearance: none;
     appearance: none;
     background-repeat: no-repeat;
+    background-image: -o-linear-gradient(45deg, transparent 50%, currentColor 50%), -o-linear-gradient(315deg, currentColor 50%, transparent 50%);
     background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
     background-position: right 15px top 1em, right 10px top 1em;
     background-size: 5px 5px, 5px 5px;
