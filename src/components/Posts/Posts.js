@@ -19,7 +19,7 @@ class Posts extends Component {
         prevPage: 0,
         currentPage: 0,
         nextPage: 0,
-        limit: '10'
+        limit: 5
     };
 
     componentDidUpdate(){
@@ -37,6 +37,8 @@ class Posts extends Component {
                 this.loadData(null)
             else if (this.state.currentPage)
                 this.loadData(null)
+            else if (this.state.limit)
+                this.loadData(null)
         }
         
     }
@@ -50,7 +52,7 @@ class Posts extends Component {
         if (page !== this.state.currentPage)
             page = this.state.currentPage;
         
-        let url = `posts?page=${page}&limit=3&order_by=${this.state.order_by}&order_direction=${this.state.order_direction}`
+        let url = `posts?page=${page}&limit=${this.state.limit}&order_by=${this.state.order_by}&order_direction=${this.state.order_direction}`
         if (search && search.length > 0)
             url = `/posts?page=1&limit=10&order_by=createdAt&order_direction=desc&search=${search}`;
         axios.get(url)
@@ -93,6 +95,11 @@ class Posts extends Component {
     changeSortHandler = (e) => {
         if (e.target.value !== this.state.order_by)
             this.setState({order_by: e.target.value, needsUpdate: true})
+    }
+
+    changeLimitHandler = (e) => {
+        if (e.target.value !== this.state.limit)
+            this.setState({limit: e.target.value, needsUpdate: true})
     }
 
     postSelectedHandler = (id) => {
@@ -154,6 +161,14 @@ class Posts extends Component {
                     <option value="rating">Most votes</option>
                     <option value="updatedAt">Recent Activity</option>
                     <option value="createdAt">Newest</option>
+                </select>
+                <select
+                value='-'
+                onChange={this.changeLimitHandler}>
+                    <option value="-">Limit items:</option>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
                 </select>
                 
             </div>
