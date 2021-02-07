@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './Comment.css';
 import axios from 'axios';
-import Button from '../Button/Button';
 import defaultUserAvatar from '../../assets/images/default-avatar.png';
 import Subcomment from './Subcomment/Subcomment';
 
@@ -138,7 +137,7 @@ class Comment extends Component {
                                 <option value="inactive">inactive</option>
                             </select>
                             <button type="submit" className="SubmitButton"> Submit </button>
-                            <button className="" onClick={this.cancelEditHandler} className="DeleteButton">Cancel</button>
+                            <button onClick={this.cancelEditHandler} className="DeleteButton">Cancel</button>
                         </form>
                     </div>
                 )
