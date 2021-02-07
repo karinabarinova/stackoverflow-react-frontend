@@ -1,10 +1,10 @@
 .NavigationItems {
-    margin: 10px 0;
+    margin: 0;
     padding: 0;
     list-style: none;
     display: block;
-    /* flex-flow: column;
-    align-items: center; */
+    flex-flow: row;
+    align-items: center;
     width: 100%;
 }
 
@@ -35,17 +35,15 @@
 }
 
 @media (min-width: 500px) {
-    .NavigationItems {
-        flex-flow: row;
-    }
 
     .NavigationItems {
-        margin: 0;
-        padding: 0;
+        /* margin: 10px; */
+        /* padding:10px; */
         list-style: none;
         display: flex;
-        flex-flow: column;
-        align-items: center;
+        flex-flow: row;
+        justify-content: center;
+        align-items: flex-start;
         height: 100%;
     }
     

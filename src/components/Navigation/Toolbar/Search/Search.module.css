@@ -1,5 +1,6 @@
 .searchContainer {
     margin-right: 10em;
+    width: 100%;
 }
 
 input[type=text] {
@@ -7,10 +8,11 @@ input[type=text] {
     margin-top: 8px;
     font-size: 17px;
     border: none;
+    width: 70%;
 }
   
 .searchContainer button {
-    float: right;
+    /* float: right; */
     padding: 6px 8px;
     margin-top: 8px;
     margin-right: 16px;
@@ -22,4 +24,33 @@ input[type=text] {
   
 .searchContainer button:hover {
     background: #ccc;
+}
+
+@media (min-width: 500px) {
+    .searchContainer {
+        margin-right: 10em;
+        width: 100%;
+    }
+    
+    input[type=text] {
+        padding: 6px;
+        margin-top: 8px;
+        font-size: 17px;
+        border: none;
+    }
+      
+    .searchContainer button {
+        float: right;
+        padding: 6px 8px;
+        margin-top: 8px;
+        margin-right: 16px;
+        background: #ddd;
+        font-size: 17px;
+        border: none;
+        cursor: pointer;
+      }
+      
+    .searchContainer button:hover {
+        background: #ccc;
+    }
 }

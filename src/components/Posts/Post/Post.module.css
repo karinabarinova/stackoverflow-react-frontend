@@ -1,14 +1,14 @@
 .Post {
     background-color: white;
     display: flex;
-    flex-wrap: nowrap;
-    width: 80%;
+    flex-wrap: wrap;
+    /* width: 100%; */
     padding: 16px;
     text-align: center;
     border-radius: 4ch;
     border: 1px solid #eee;
     box-shadow: 0 2px 3px #ccc;
-    margin: 10px;
+    margin: 5px;
     box-sizing: border-box;
     cursor: pointer;
     align-items: center;
@@ -117,4 +117,127 @@
     color: black;
     font-weight: 600;
     flex-basis: 100%;
+}
+
+@media (min-width: 500px) {
+    .Post {
+        background-color: white;
+        display: flex;
+        flex-wrap: nowrap;
+        width: 100%;
+        padding: 16px;
+        text-align: center;
+        border-radius: 4ch;
+        border: 1px solid #eee;
+        box-shadow: 0 2px 3px #ccc;
+        margin: 10px;
+        box-sizing: border-box;
+        cursor: pointer;
+        align-items: center;
+        justify-content: space-between; 
+        font-size: medium ;
+    }
+    
+    .Post .column {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: stretch;
+        justify-content: center;
+    }
+    
+    .Post .column2 {
+        flex: 1 1 auto;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+    }
+    
+    .Post .column2 .content {
+        align-self: stretch;
+    }
+    
+    .Post .column2 .column3 {
+        margin-top: 1em;
+        display: flex;
+        flex-direction: row;
+        /* align-items: center; */
+        justify-content: flex-end;
+    }
+    
+    .Post .column2 .column3 .Info {
+        display: flex;
+        justify-content:space-around;
+        align-items: center;
+    }
+    
+    .Post .column2 .column3 .categories {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        margin-left: 2em;
+        width: 100%;
+    }
+    
+    .categoryTitle {
+    
+        color: #39739d;
+        background-color: rgb(225, 236, 244);
+        border-radius: 5%;
+        padding: 5px;
+        margin: 5px;
+        height: 2em;
+    }
+    
+    .Post .column2 .column3 img {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .Post:hover,
+    .Post:active {
+        border: 1px solid grey;
+        background-color: rgba(245, 245, 245, 0.905);
+    }
+    
+    .Post .Postblock1 {
+        color: grey;
+        border: 1px solid lightgray;
+        margin: 8px;
+        padding: 8px;
+    }
+    
+    .Post .Postblock2 {
+        color: grey;
+        margin: 8px;
+        padding: 8px;
+    }
+    
+    .arrowUp {
+        width: 0; 
+        height: 0; 
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;   
+        border-bottom: 20px solid lightgray;
+        margin-bottom: 10px;
+    }
+    
+    .arrowDown {
+        width: 0; 
+        height: 0; 
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-top: 20px solid lightgray;
+        margin-top: 10px;
+    }
+    
+    .Author {
+        margin: 16px 0;
+        color: black;
+        font-weight: 600;
+        flex-basis: 100%;
+    }
 }

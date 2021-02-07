@@ -2,7 +2,7 @@
     background-color: white;
     display: flex;
     flex-wrap: wrap;
-    flex: 1 0 25%;
+    flex: 1 0 70%;
     margin: 5px;
     height: 100px;
     width: 80%;
@@ -35,3 +35,44 @@
     border-radius: 5%;
     padding: 5px
 }
+
+@media (min-width: 500px) {
+    .Category {
+        background-color: white;
+        display: flex;
+        flex-wrap: wrap;
+        flex: 1 0 25%;
+        margin: 5px;
+        height: 100px;
+        width: 80%;
+        padding: 16px;
+        text-align: center;
+        border: 1px solid #eee;
+        box-shadow: 0 2px 3px #ccc;
+        margin: 10px;
+        box-sizing: border-box;
+        cursor: pointer;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .Category:hover,
+    .Category:active {
+        background-color: #C0DDF5;
+    }
+    
+    .Category .Categoryblock {
+        color: grey;
+        border: 1px solid lightgray;
+        margin: 8px;
+        padding: 8px;
+    }
+    
+    .Category .Title {
+        color: #39739d;
+        background-color: rgb(225, 236, 244);
+        border-radius: 5%;
+        padding: 5px
+    }
+}
+
