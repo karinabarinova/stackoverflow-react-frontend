@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import classes from './Dashboard.module.css';
-import Button from '../Button/Button';
+import Button from '../UI/Button/Button';
 import Post from '../Posts/Post/Post';
 import defaultUserAvatar from '../../assets/images/default-avatar.png';
 import Comment from '../Comment/Comment';

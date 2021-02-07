@@ -5,7 +5,7 @@ import Comment from '../../Comment/Comment';
 import { connect } from 'react-redux';
 import defaultUserAvatar from '../../../assets/images/default-avatar.png';
 import { Link } from 'react-router-dom';
-import Button from '../../Button/Button';
+import Button from '../../UI/Button/Button';
 
 class FullPost extends Component {
     state = {

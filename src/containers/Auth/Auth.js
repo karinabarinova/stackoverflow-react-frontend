@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Input from '../../components/Input/Input';
-import Button from '../../components/Button/Button';
-import Spinner from '../../components/Spinner/Spinner';
+import Input from '../../components/UI/Input/Input';
+import Button from '../../components/UI/Button/Button';
+import Spinner from '../../components/UI/Spinner/Spinner';
 import classes from './Auth.module.css';
 import * as actions from '../../store/index';
 import { checkValidity } from '../../shared/utility';

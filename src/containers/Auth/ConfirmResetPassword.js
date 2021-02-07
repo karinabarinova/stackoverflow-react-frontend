@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import Input from '../../components/Input/Input';
-import Button from '../../components/Button/Button';
-import Spinner from '../../components/Spinner/Spinner';
+import Input from '../../components/UI/Input/Input';
+import Button from '../../components/UI/Button/Button';
+import Spinner from '../../components/UI/Spinner/Spinner';
 import classes from './ResetPassword.module.css';
 import { checkValidity } from '../../shared/utility';
 import axios from 'axios';

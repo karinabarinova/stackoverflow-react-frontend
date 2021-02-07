@@ -2,7 +2,7 @@ import { React, Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../store/index';
 import Post from './Post/Post';
-import Button from '../Button/Button';
+import Button from '../UI/Button/Button';
 import axios from 'axios';
 import './Posts.css';
 
