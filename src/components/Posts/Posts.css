@@ -20,3 +20,9 @@
 .Posts .header > div {
     margin: 0 10%;
 }
+
+.Pages {
+    display: flex;
+    width: 30%;
+    justify-content: space-around;
+}

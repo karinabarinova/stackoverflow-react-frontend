@@ -1,8 +1,6 @@
 import { React, Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../store/index';
-// import Pagination from "react-js-pagination";
-// import { Redirect } from 'react-router-dom';
 import Post from './Post/Post';
 import Button from '../Button/Button';
 import axios from 'axios';
@@ -18,6 +16,7 @@ class Posts extends Component {
         search: null,
         order_by: 'createdAt',
         order_direction: 'desc',
+        prevPage: 0,
         currentPage: 0,
         nextPage: 0,
         limit: '10'
@@ -51,13 +50,13 @@ class Posts extends Component {
         if (page !== this.state.currentPage)
             page = this.state.currentPage;
         
-        let url = `posts?page=${page}&limit=5&order_by=${this.state.order_by}&order_direction=${this.state.order_direction}`
+        let url = `posts?page=${page}&limit=3&order_by=${this.state.order_by}&order_direction=${this.state.order_direction}`
         if (search && search.length > 0)
             url = `/posts?page=1&limit=10&order_by=createdAt&order_direction=desc&search=${search}`;
         axios.get(url)
             .then((res) => {
                 const posts = res.data.data.data;
-                this.setState({ posts: posts, needsUpdate: false, nextPage: res.data.data.nextPage});
+                this.setState({ posts: posts, needsUpdate: false, nextPage: res.data.data.nextPage, prevPage: res.data.data.previousPage});
             })
             .catch(error => {
                 this.setState({ error: true })
@@ -107,7 +106,11 @@ class Posts extends Component {
             this.props.history.push('/login');
     }
 
-    loadMore = () => {
+    prevPageHandler = () => {
+        this.setState({currentPage: this.state.prevPage, needsUpdate: true});
+    }
+
+    nextPageHandler = () => {
         this.setState({currentPage: this.state.nextPage, needsUpdate: true});
     }
 
@@ -158,12 +161,20 @@ class Posts extends Component {
                 
             </div>
         )
-        let pagination = null;
+        let nextPage, prevPage = null;
+
+        if (this.state.prevPage) {
+            prevPage = (
+                <div className="Pagination">
+                    <Button btnType="Pages" clicked={this.prevPageHandler}>Previous Page</Button>
+                </div>
+            )
+        }
         
         if (this.state.nextPage) {
-            pagination = (
+            nextPage = (
                 <div className="Pagination">
-                    <Button btnType="Success" clicked={this.loadMore}>Load More</Button>
+                    <Button btnType="Pages" clicked={this.nextPageHandler}>Next Page</Button>
                 </div>
             )
         }
@@ -175,7 +186,10 @@ class Posts extends Component {
                 </div>
                 {selectCategory}
                 {posts}
-                {pagination}
+                <div className="Pages">
+                    {prevPage}
+                    {nextPage}
+                </div>
             </section>
         )
     }
