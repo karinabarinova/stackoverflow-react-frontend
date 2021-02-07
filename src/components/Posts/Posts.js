@@ -75,7 +75,7 @@ class Posts extends Component {
         if (categoryId !== '0') {
             axios.get('/categories/' + +categoryId + '/posts')
                 .then(res => {
-                    this.setState({posts: res.data, needsUpdate: true})
+                    this.setState({posts: res.data, needsUpdate: false})
             })
                 .catch(e => console.log(e))
         }
@@ -134,14 +134,12 @@ class Posts extends Component {
         }
         let selectCategory = (
             <div className="custom-select">
-                {/* <label>Filter by Categories: </label> */}
                 <select
                 value={this.state.selectedOption}
                 onChange={this.changeCategoryUpdateHandler}>
                     <option value="0">Filter by Categories:</option>
                     {this.state.categories.map(({title, id}, index) => <option key={id} value={id}>{title}</option>)}
                 </select>
-                {/* <label>Sort by Time: </label> */}
                 <select
                 value='-'
                 onChange={this.changeTimeHandler}>
@@ -149,7 +147,6 @@ class Posts extends Component {
                     <option value="desc">Start from newest</option>
                     <option value="asc">Start from oldest</option>
                 </select>
-                {/* <label>Sort by : </label> */}
                 <select
                 value='-'
                 onChange={this.changeSortHandler}>

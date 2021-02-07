@@ -1,4 +1,5 @@
 .Dashboard {
+    margin: 70px auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -6,6 +7,8 @@
 }
 
 .Dashboard .Info {
+    margin: 1rem;
+    padding: 1rem;
     background-color: white;
 }
 
@@ -29,26 +32,18 @@
     background-color: #27363b;
 }
 
-/* .Dashboard .Info #file-upload-button { 
-    width: 30%;
-    margin-top: 2em;
-    border: 1px solid #27363b;
-    background-color: #27363b;
-} */
-
 .Dashboard .Content { 
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    align-content: flex-start;
+    width: 100%;
 }
 
 .Dashboard .Content .questions {
-    border: 1px solid black;
+    width: 100%;
 
 }
 
 .Dashboard .Content .answers {
-    border: 1px solid black;
-
+    width: 100%;
 }

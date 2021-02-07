@@ -119,8 +119,8 @@ class Dashboard extends Component {
     }
 
     render() {
-        let questions = <p>You have not asked any questions yet ;(</p>;
-        let answers = <p>You have not answer to any questions yet ;(</p>;
+        let questions = <div><p>You have not asked any questions yet ;(</p></div>;
+        let answers = <div><p>You have not answer to any questions yet ;(</p></div>;
         let editProfileSettings = null;
         let errorMessage = null;
 
@@ -184,8 +184,6 @@ class Dashboard extends Component {
                         </label>
                         <Button btnType="DashboardSuccess">Submit Avatar</Button>
                     </form>
-                    
-                    {/* <Button btnType="DashboardSuccess">Upload Avatar</Button> */}
                     <Button btnType="DashboardDanger" clicked={this.editProfileInitHandler}>Change Password</Button>
                     {editProfileSettings}
                 </div>

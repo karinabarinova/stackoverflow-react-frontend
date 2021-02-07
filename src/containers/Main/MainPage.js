@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import Layout from '../../components/Layout/Layout';
 import Posts from '../../components/Posts/Posts';
 import FullPost from '../../components/Posts/FullPost/FullPost';
@@ -87,4 +87,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MainPage));
