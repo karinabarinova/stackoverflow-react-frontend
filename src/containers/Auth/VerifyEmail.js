@@ -79,12 +79,12 @@ class VerifyEmail extends Component {
         let errorMessage = null;
         if (this.state.error)
             errorMessage = (
-                <p style={{textTransform: 'capitalize', backgroundColor: "red", borderRadius: "1ch"}}>Invalid Token</p>
+                <p style={{textTransform: 'capitalize', backgroundColor: "#92bed3", borderRadius: "1ch"}}>Invalid Token</p>
             )
         let resultMessage = null;
         if (this.state.result) {
                 resultMessage = (
-                    <p style={{textTransform: 'capitalize', backgroundColor: "green", borderRadius: "1ch"}}>Verification successfull, you can now login</p>
+                    <p style={{textTransform: 'capitalize', backgroundColor: "#92bed3", borderRadius: "1ch"}}>Verification successfull, you can now login</p>
                 )
             }
         

@@ -22,7 +22,7 @@ const navigationItems = (props) => (
             : <NavigationItem link="/logout">Log out</NavigationItem>}
         {props.isAuthenticated ? <div className={classes.Dashboard}>
             <NavLink to="/dashboard"><img src={localStorage.getItem('avatar') !== 'undefined' ? `http://localhost:3001/${localStorage.getItem('avatar').replace('resources', '')}` : defaultUserAvatar} target="_blank" alt="user avatar"/></NavLink>
-            {localStorage.getItem('username')} | {localStorage.getItem('role')}</div> : null}
+            {localStorage.getItem('username')}</div> : null}
     </ul>
 )
 
