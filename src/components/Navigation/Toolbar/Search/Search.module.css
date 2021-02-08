@@ -1,6 +1,9 @@
 .searchContainer {
     margin-right: 10em;
-    width: 100%;
+    padding: 10px 0;
+    /* width: 100%; */
+    /* display: flex; */
+    /* justify-content: center; */
 }
 
 input[type=text] {
@@ -8,25 +11,18 @@ input[type=text] {
     margin-top: 8px;
     font-size: 17px;
     border: none;
-    width: 70%;
+    /* width: 70%; */
 }
-  
+
 .searchContainer button {
-    /* float: right; */
-    padding: 6px 8px;
-    margin-top: 8px;
-    margin-right: 16px;
-    background: #ddd;
-    font-size: 17px;
-    border: none;
-    cursor: pointer;
+    display: none;
   }
-  
+
 .searchContainer button:hover {
     background: #ccc;
 }
 
-@media (min-width: 500px) {
+@media (max-width: 499px) {
     .searchContainer {
         margin-right: 10em;
         width: 100%;
@@ -37,19 +33,17 @@ input[type=text] {
         margin-top: 8px;
         font-size: 17px;
         border: none;
+        width: 70%;
     }
-      
+    
     .searchContainer button {
+        display: block;
         float: right;
         padding: 6px 8px;
         margin-top: 8px;
         margin-right: 16px;
-        background: #ddd;
-        font-size: 17px;
-        border: none;
-        cursor: pointer;
-      }
-      
+    
+    }
     .searchContainer button:hover {
         background: #ccc;
     }
