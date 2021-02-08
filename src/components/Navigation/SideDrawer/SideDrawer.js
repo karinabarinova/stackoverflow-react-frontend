@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Logo from '../../UI/Logo/Logo';
 import NavigationItems from '../Toolbar/NavigationItems/NavigationItems';
 import classes from './SideDrawer.module.css';
 import Backdrop from '../../UI/Backdrop/Backdrop';
