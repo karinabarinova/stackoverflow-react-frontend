@@ -36,7 +36,6 @@ class Comment extends Component {
                     })
                 axios.get('/comments/' + this.props.id + '/comments')
                     .then(res => {
-                        console.log(res.data)
                         this.setState({subcomments: res.data})
                     })
                     .catch(e => console.log(e))

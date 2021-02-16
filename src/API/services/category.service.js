@@ -31,7 +31,6 @@ async function getAllPosts(id) {
             }
         }]
     })
-    // console.log(posts[0].posts)
     return posts[0].posts
 }
 
