@@ -115,7 +115,6 @@ class Login extends Component {
         
         let authRedirect = null;
         if (this.props.isAuthenticated) {
-            console.log('true')
             authRedirect = <Redirect to="/" />
         }
                 
