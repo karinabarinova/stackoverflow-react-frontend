@@ -24,7 +24,6 @@ class NewPost extends Component {
                 this.props.history.push('/');
             })
             .catch(e => {
-                console.log("New Post")
                 console.log(e)
             })
     }

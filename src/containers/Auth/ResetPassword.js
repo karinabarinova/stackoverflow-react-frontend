@@ -48,7 +48,6 @@ class ResetPassword extends Component {
             })
             .catch(e => {
                 console.log(e);
-                console.log("RESET PASSOWRD")
             })
     }
 

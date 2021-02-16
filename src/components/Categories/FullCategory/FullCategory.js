@@ -25,16 +25,13 @@ class FullCategory extends Component {
                         this.setState({loadedCategory: res.data})
                     })
                     .catch(e => {
-                        console.log("Full Category")
                         console.log(e);
                     })
                 axios.get('/categories/' + +this.props.match.params.id + '/posts')
                     .then(res => {
-                        console.log(res);
                         this.setState({ postsUnderCategory: res.data})
                     })
                     .catch(e => {
-                        console.log("Full Category")
                         console.log(e)
                     })
         }       
@@ -43,7 +40,7 @@ class FullCategory extends Component {
     deleteCategoryHandler = () => {
         axios.delete('/categories/' + this.props.match.params.id)
             .then(res => {
-                // console.log(res)
+                return;
             })
             .catch()
     }    
@@ -72,13 +69,12 @@ class FullCategory extends Component {
         }
         if (this.state.postsUnderCategory.length) {
             posts = this.state.postsUnderCategory.map(post => {
-                console.log("POSTTT",post)
                 return <Post 
                         key={post.id}
                         title={post.title}
                         id={post.id}
                         authorId = {post.author}
-                        author={post.author} //TODO: incorrect author
+                        author={post.author}
                         rating={post.rating}
                         publish_date={post.publish_date}
                         clicked={() => this.postSelectedHandler(post.id)}

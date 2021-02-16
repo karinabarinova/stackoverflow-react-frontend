@@ -15,7 +15,6 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
 	auth: authReducer
 })
-
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 
 axios.defaults.baseURL = 'http://localhost:3001/api';

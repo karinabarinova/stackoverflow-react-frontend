@@ -22,7 +22,6 @@ class Post extends Component {
                         this.setState({ authorAvatar: res.data.avatar})
                     })
                     .catch(e => {
-                        console.log("POST")
                         console.log(e);
                     })
             })
@@ -31,7 +30,6 @@ class Post extends Component {
             })
         axios.get('/posts/' + this.props.id + '/categories')
             .then(res => {
-                // console.log(res.data[0].categories);
                 this.setState({ categories: res.data[0].categories})
             })
             .catch(e => {

@@ -25,8 +25,7 @@ class Dashboard extends Component {
                 this.setState({ user: res.data })
             })
             .catch(e => {
-                // this.setState({error: true})
-                console.log("Dashboard")
+                console.log(e)
             })
         axios.get('/users/' + id + '/posts', {headers: {
             'authorization': `Basic ${localStorage.getItem('token')}`
@@ -35,8 +34,7 @@ class Dashboard extends Component {
                 this.setState({ questions: res.data })
             })
             .catch(e => {
-                // this.setState({error: true})
-                console.log("Dashboard")
+                console.log(e)
             })
         axios.get('/users/' + id + '/comments', {headers: {
             'authorization': `Basic ${localStorage.getItem('token')}`
@@ -45,8 +43,7 @@ class Dashboard extends Component {
                 this.setState({ answers: res.data })
             })
             .catch(e => {
-                // this.setState({error: true})
-                console.log("Dashboard")
+                console.log(e)
             })
     }
 
@@ -62,7 +59,6 @@ class Dashboard extends Component {
     }
 
     editProfileInitHandler = () => {
-        console.log("clicked")
         this.setState({initEdit: true})
     }
 
@@ -87,14 +83,11 @@ class Dashboard extends Component {
             axios.patch(`/users/${userId}`, editInfo, config)
             .then(res => {
                 this.setState({initEdit: false})
-                console.log(res);
             })
             .catch(e => {
                 console.log(e)
             })
-        }
-        //else throw an error Password too short
-        
+        }        
     }
 
     submitHander = (event) => {

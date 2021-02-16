@@ -81,9 +81,8 @@ class FullPost extends Component {
             }
         };
         axios.post('/posts/' + this.props.match.params.id + '/subscribe', {}, config)
-            .then(res => console.log(res.data))
+            .then(res => {return;})
             .catch(e => {
-                console.log(e.response)
                 this.setState({errorMessage: e.response.data.message})})
     }    
 
@@ -94,7 +93,7 @@ class FullPost extends Component {
             }
         };
         axios.post('/posts/' + this.props.match.params.id + '/unsubscribe', {}, config)
-            .then(res => console.log(res.data))
+            .then(res => {return;})
             .catch(e => {
                 console.log(e.response)
                 this.setState({errorMessage: e.response.data.message})})

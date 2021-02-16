@@ -39,7 +39,7 @@ class Comment extends Component {
                         console.log(res.data)
                         this.setState({subcomments: res.data})
                     })
-                    .catch(e => console.log("subcomments", e))
+                    .catch(e => console.log(e))
             }
         }
     }

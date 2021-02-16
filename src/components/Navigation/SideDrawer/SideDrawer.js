@@ -6,7 +6,6 @@ import Backdrop from '../../UI/Backdrop/Backdrop';
 import Aux from '../../Auxx/Auxx';
 
 const sideDrawer = ( props ) => {
-    console.log(props)
     let attachedClasses = [classes.SideDrawer, classes.Close];
     if (props.open) {
         attachedClasses = [classes.SideDrawer, classes.Open];

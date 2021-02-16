@@ -24,7 +24,6 @@ class FullUser extends Component {
                         this.setState({loadedUser: res.data})
                     })
                     .catch(e => {
-                        console.log("Full User")
                         console.log(e);
                     })
         }       
